@@ -10,13 +10,13 @@ $dbCon = new PDODatabase($dbAdmin, $dbName, $dbPass);
 $addModel = new model(); //model is the name of the class that will add and update model lists
 
 $imgDir = '../../images/'; //this is the path for where the image will go, outside the two dir we are in.
-$store = strip_tags($_POST['storeName']);
-$storelink = $_POST['storeLink'];
-$salon = strip_tags($_POST['salonName']);
-$salonlink = $_POST['salonLink'];
+$storeName = strip_tags($_POST['storeName']);
+$storeLink = $_POST['storeLink'];
+$salonName = strip_tags($_POST['salonName']);
+$salonLink = $_POST['salonLink'];
 $file[0] =  $_FILES['file1']; //these two lines set the file to an array so we can capture both of them.
 $file[1] =  $_FILES['file2'];
-
+$order = $_POST['storeOrder'];
 
 
 
@@ -43,7 +43,7 @@ for ($i = 0; $i <= 1; $i++) {
             } else {
                 move_uploaded_file($file[$i]["tmp_name"], "../../images/".$file[$i]["name"]); //the move of the file to its location
                 //echo "Stored in: " . "../../images/".$file[$i]["name"];
-                $imagPath[$i] = "../../images/".$file[$i]["name"];
+                $imagPath[$i] = "/images/".$file[$i]["name"];
             }
         }
     } else {
@@ -51,9 +51,9 @@ for ($i = 0; $i <= 1; $i++) {
     }
 }
 
+//echo "$storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1], $order";
 
-
-$add = $addModel->addStore($dbCon, $storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1]);
+$add = $addModel->addStore($dbCon, $storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1], $order);
 //echo count($sepItems);
 //print_r($itemPricetogeter);
 if($add == 'yes'){
