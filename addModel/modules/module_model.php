@@ -21,9 +21,9 @@ class model{
     }
     
     function addStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order){
-        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, order) VALUES (NULL,'$storeName', '$storeLink', '$storeImage', '$salonName', '$salonLink', '$salonImage', '$order')";
+        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, runwayOrder) VALUES (NULL,'$storeName', '$storeLink', '$storeImage', '$salonName', '$salonLink', '$salonImage', '$order')";
         $res = $dbCon->select($sql);
-        
+        echo $sql;
         return $add = 'yes';
     }
     
