@@ -21,8 +21,8 @@ echo "<script> var level=$level;"
 
 <div id="edit" class="adminEdit"><span aria-hidden="true">&times;</span>EXIT</div>
 <div class="adminButtons">
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addModel">Add Model</button>
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#storeModal" id="addStore">Add Store</button>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addModel">Add Model</button>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#storeModal" id="addStore">Add Store</button>
 </div>
 
 <!-- the add model modal-->
@@ -57,7 +57,7 @@ echo "<script> var level=$level;"
 
         <script>
 
-           
+
 
         </script>
     </div>
@@ -82,7 +82,7 @@ echo "<script> var level=$level;"
                 <input type="text" value="" placeholder="Salon Name" id="salonName" />
                 <input type="text" value="" placeholder="Salon Link" id="salonLink" />
                 <input type="file" value="" placeholder="Salon Image" id="salonImage" />
-                
+
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -93,7 +93,7 @@ echo "<script> var level=$level;"
 
         <script>
 
-           
+
 
         </script>
     </div>
@@ -104,72 +104,97 @@ echo "<script> var level=$level;"
 
 <script>
     jQuery('#newResult').load('addModel/control/control_getModel.php');
-    
+
     jQuery('.reload').on('hidden.bs.modal', function (e) {
-  jQuery('#newResult').load('addModel/control/control_getModel.php');
-});
-    
-    
-    $('.multi-field-wrapper_add').each(function() {
-                var $wrapper = $('.multi-fields_add', this);
-                $("#addItem_add", $(this)).click(function(e) {
-                    $('.multi-field_add:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
-                });
-                $('.multi-field_add .remove-field', $wrapper).click(function() {
-                    if ($('.multi-field_add', $wrapper).length > 1)
-                        $(this).parent('.multi-field_add').remove();
-                });
-            });
-            var items = '';
-            var price = '';
-            jQuery('#save').click(function() {
-                var store = jQuery('#storeName').val();
-                var modelNum = jQuery('#modelNum').val();
-                jQuery('.multi-field_add .items').each(function() {
-                    if (items === '') {
-                        items = jQuery(this).val();
-                    } else {
-                        items = items + '|' + jQuery(this).val();
-                    }
+        jQuery('#newResult').load('addModel/control/control_getModel.php');
+    });
 
-                });
-                jQuery('.multi-field_add .itemsPrice').each(function() {
-                    if (price === '') {
-                        price = jQuery(this).val();
-                    } else {
-                        price = price + '|' + jQuery(this).val();
-                    }
 
-                });
-                // alert(items+' - '+price);
-                //jQuery('#newResult').load('addModel/control/control_addModel.php?store='+store+'&modelNum='+modelNum+'&items="'+items+'"&price="'+price+'"');
-                jQuery.post('addModel/control/control_addModel.php', {store: store, modelNum: modelNum, items: items, price: price});
-                //jQuery('#mother').html('');
-                //jQuery('#mother').load('addModel/view/view_addModel.php?level=' + level + '&userID=' + userID);
-                
-                jQuery("input[type=text]").each(function(){
-                    jQuery(this).val("");
-                });
-               
-                jQuery('.multi-field_add:not(:first)').remove();
-                       
-                    
-                    //jQuery('#newResult').load('addModel/control/control_getModel.php');
-                $('#myModal').modal('toggle');
-            });
-            
-            /** 
-             * This is the add store jQuery
-             * after user fill in input, we will need to send the info to php to 
-             * save the image / update the db with store, info salon info, and image file location. 
-             **/
-            jQuery('#saveStore').click(function(){
-                var storeName= jQuery('#storeName').val();
-                var storeLink = jQuery('#storeLink').val();
-                file = jQuery('#storeImage')[0].files[0];
-                jQuery.post('addModel/control/control_addStore.php',{storeName:storeName, storeLink:storeLink, storeImage:file});
-                //alert(file);
-                
-            });
-     
+    $('.multi-field-wrapper_add').each(function () {
+        var $wrapper = $('.multi-fields_add', this);
+        $("#addItem_add", $(this)).click(function (e) {
+            $('.multi-field_add:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+        });
+        $('.multi-field_add .remove-field', $wrapper).click(function () {
+            if ($('.multi-field_add', $wrapper).length > 1)
+                $(this).parent('.multi-field_add').remove();
+        });
+    });
+    var items = '';
+    var price = '';
+    jQuery('#save').click(function () {
+        var store = jQuery('#storeName').val();
+        var modelNum = jQuery('#modelNum').val();
+        jQuery('.multi-field_add .items').each(function () {
+            if (items === '') {
+                items = jQuery(this).val();
+            } else {
+                items = items + '|' + jQuery(this).val();
+            }
+
+        });
+        jQuery('.multi-field_add .itemsPrice').each(function () {
+            if (price === '') {
+                price = jQuery(this).val();
+            } else {
+                price = price + '|' + jQuery(this).val();
+            }
+
+        });
+        // alert(items+' - '+price);
+        //jQuery('#newResult').load('addModel/control/control_addModel.php?store='+store+'&modelNum='+modelNum+'&items="'+items+'"&price="'+price+'"');
+        jQuery.post('addModel/control/control_addModel.php', {store: store, modelNum: modelNum, items: items, price: price});
+        //jQuery('#mother').html('');
+        //jQuery('#mother').load('addModel/view/view_addModel.php?level=' + level + '&userID=' + userID);
+
+        jQuery("input[type=text]").each(function () {
+            jQuery(this).val("");
+        });
+
+        jQuery('.multi-field_add:not(:first)').remove();
+
+
+        //jQuery('#newResult').load('addModel/control/control_getModel.php');
+        $('#myModal').modal('toggle');
+    });
+
+    /** 
+     * This is the add store jQuery
+     * after user fill in input, we will need to send the info to php to 
+     * save the image / update the db with store, info salon info, and image file location. 
+     **/
+    jQuery('#saveStore').click(function () {
+        var storeName = jQuery('#storeName').val();
+        var storeLink = jQuery('#storeLink').val();
+        //file = jQuery('#storeImage')[0].files[0];
+        
+        var salonName = jQuery('#salonName').val();
+        var salonLink = jQuery('#salonLink').val();
+        //file2 = jQuery('#salonImage')[0].files[0];
+        // jQuery.post('addModel/control/control_addStore.php',{storeName:storeName, storeLink:storeLink, storeImage:file});
+        //alert(file);
+
+        var formData = new FormData();
+        formData.append('file1', jQuery('#storeImage')[0].files[0]);
+        formData.append('file2', jQuery('#salonImage')[0].files[0]);
+        formData.append('storeName', storeName);
+        formData.append('storeLiink', storeLink);
+        formData.append('salonName', salonName);
+        formData.append('salonLink', salonLink);
+
+        jQuery.ajax({
+            url: 'addModel/control/control_addStore.php',
+            type: 'POST',
+            data: formData,
+            enctype: 'multipart/form-data',
+            processData: false, // tell jQuery not to process the data
+            contentType: false, // tell jQuery not to set contentType
+            success: function (data) {
+             //console.log(data);
+               // alert(data);
+            }
+        });
+
+    });
+
 </script>
