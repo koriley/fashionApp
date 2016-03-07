@@ -1,78 +1,31 @@
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
- 
-
-.adminEdit{
-    position:fixed;
-    top:0;
-    right:10px;
-    font-size: 25px;
-}
-.redTop{
-    margin-top:-40px;
-    border-radius:5px;
-    background: #fff;
-    border-top:5px solid #ff656c;
-}
-
-h1{
-     text-align: center;
-    color: #000;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
-}
-.refreshList{
-    margin-top:5px;
-}
-.refreshList button{
-    border-radius:5px;
-    padding:10px;
-}
-
-.eventList{
-    border:1px solid black; 
-    padding:25px; 
-    border-radius:5px;
-    box-shadow: 1px 1px 9px 2px rgb(238, 236, 236) inset;
-}
-
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 7, 2016, 9:55:32 AM
+    Author     : koriley
+*/
+/* fonts */
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+/*vars*/
+/*user login */
 .login-block {
-    width: 320px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    border-top: 5px solid #ff656c;
-    margin: 0 auto;
-}
-
-.login-block h1 {
+  width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  border-top: 5px solid #ff656c;
+  margin: 0 auto; }
+  .login-block h1 {
     text-align: center;
     color: #000;
     font-size: 18px;
     text-transform: uppercase;
     margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.login-block input {
+    margin-bottom: 20px; }
+  .login-block input {
     width: 100%;
     height: 42px;
     box-sizing: border-box;
@@ -80,116 +33,133 @@ h1{
     border: 1px solid #ccc;
     margin-bottom: 20px;
     font-size: 14px;
-    font-family: Montserrat;
+    font-family: "Oswald", sans-serif;
     padding: 0 20px 0 50px;
-    outline: none;
-}
-
-.login-block input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    outline: none; }
+  .login-block input:active {
+    border: 1px solid #ff656c; }
+  .login-block input#username {
+    background: #fff url("http://i.imgur.com/u0XmBmv.png") 20px top no-repeat;
+    background-size: 16px 80px; }
+  .login-block input#username:focus {
+    background: #fff url("http://i.imgur.com/u0XmBmv.png") 20px bottom no-repeat;
     background-size: 16px 80px;
-}
-
-.login-block input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    border: 1px solid #ff656c; }
+  .login-block input#password {
+    background: #fff url("http://i.imgur.com/Qf83FTt.png") 20px top no-repeat;
+    background-size: 16px 80px; }
+  .login-block input#password:focus {
+    background: #fff url("http://i.imgur.com/Qf83FTt.png") 20px bottom no-repeat;
     background-size: 16px 80px;
-}
-
-.login-block input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input:active, .login-block input:focus {
-    border: 1px solid #ff656c;
-}
-.buttonDiv{
-    width:45%;
-    display:inline-block;
-    height:40px;
-    margin:6px;
-    vertical-align:top;
-}
-.login-block button {
-    width: 100%;
+    border: 1px solid #ff656c; }
+  .login-block .buttonContainer {
+    width: 100%; }
+  .login-block .buttonDiv {
+    width: 45%;
+    display: inline-block;
     height: 40px;
-    background: #ff656c;
-    box-sizing: border-box;
+    margin: 6px;
+    vertical-align: top; }
+    .login-block .buttonDiv button {
+      width: 100%;
+      height: 40px;
+      background: #ff656c;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #e15960;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-family: "Oswald", sans-serif;
+      outline: none;
+      cursor: pointer; }
+
+.headImage {
+  max-width: 400px;
+  margin: auto;
+  padding-top: 15px; }
+  .headImage img {
+    width: 100%; }
+
+.top {
+  margin-top: 0px;
+  padding-top: 0px; }
+
+.userView .storeLogo {
+  text-align: center; }
+.userView .modelEdit {
+  max-width: 400px;
+  margin: auto;
+  text-align: left; }
+
+.mother {
+  text-align: center; }
+
+.welcomText {
+  font-family: "Oswald", sans-serif;
+  font-size: 14pt; }
+
+.adminEdit {
+  position: fixed;
+  top: 0;
+  right: 10px;
+  font-size: 25px; }
+
+.redTop {
+  margin-top: -40px;
+  border-radius: 5px;
+  background: #fff;
+  border-top: 5px solid #ff656c; }
+
+h1 {
+  text-align: center;
+  color: #000;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+
+.refreshList {
+  margin-top: 5px; }
+  .refreshList button {
     border-radius: 5px;
-    border: 1px solid #e15960;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: Montserrat;
-    outline: none;
-    cursor: pointer;
-}
+    padding: 10px; }
 
-.login-block button:hover {
-    background: #ff7b81;
-}
-
-
-.mother{
-    text-align:center;
-}
-
-
-
-.welcomText{
-    font-family: 'Oswald', sans-serif;
-    font-size: 14pt;
-}
+.eventList {
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 9px 2px #eeecec inset; }
 
 /************ This is the admin css ******************/
-.modelEdit{
-    /*border:2px solid black; */
-    max-width:400px; 
-    height:auto; 
-    margin-bottom:10px;
-    margin:auto;
-    padding:10px;
-    background-color:white;
-}
-.itemContainer{
-    width:100%;
-}
-.storeNameEdit{
-    border-bottom:1px solid black;
-    margin:10px;
-}
-.itemsEdit{
-     text-align: left;
-     font-family: 'Oswald', sans-serif;
-    font-size: 14pt;
-     
-}
-.priceEdit{
-     text-align: right;
-     
-}
+.modelEdit {
+  /*border:2px solid black; */
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 10px;
+  margin: auto;
+  padding: 10px;
+  background-color: #fff; }
 
-#sortable{
-    list-style-type: none;
-}
+.itemContainer {
+  width: 100%; }
+
+.storeNameEdit {
+  border-bottom: 1px solid black;
+  margin: 10px; }
+
+.itemsEdit {
+  text-align: left;
+  font-family: "Oswald", sans-serif;
+  font-size: 14pt; }
+
+.priceEdit {
+  text-align: right; }
+
+#sortable {
+  list-style-type: none; }
+
 /*****************************************************/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*# sourceMappingURL=main.css.map */

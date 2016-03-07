@@ -17,7 +17,7 @@ $modNumZero = '0';
 for ($z = 0; $z <= $storeCount - 1; $z++) {
     $storeName[$z] = $stores[$z]['store'];
 
-    echo '<div>' . $storeName[$z] . '</div>';
+    echo '<div class="storeLogo">' . $storeName[$z] . '</div>';
     $res = $addModel->getModel($dbCon, $storeName[$z]);
     $resCount = count($res);
 

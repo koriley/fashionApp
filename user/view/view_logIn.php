@@ -11,7 +11,7 @@ if($uname !=''){
                     <h1>Login</h1>
                     <input type="text" value="" placeholder="E-Mail Address" id="username" />
                     <input type="password" value="" placeholder="Password" id="password" />
-                    <div style='width:100%;'><div class='buttonDiv'>
+                    <div  class=buttonContainer" style='width:100%;'><div class='buttonDiv'>
                     <button id='create' style='display:inline;'>Create Account</button></div>
                      <div class='buttonDiv'>
                     <button id="submit" style='display:inline;'>Submit</button></div>

@@ -1,0 +1,245 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 7, 2016, 9:55:32 AM
+    Author     : koriley
+*/
+
+/* fonts */
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+/*vars*/
+$backgroundColor : #fff;
+$fontColor: #000;
+$mainFont: 'Oswald', sans-serif;
+$loginRed: #ff656c;
+$loginRadius:5px;
+$siteWidth:400px;
+$loginBorderColor: #ccc;
+$white:#fff;
+$black:#000;
+
+
+
+/*user login */
+
+.login-block{
+    width: $siteWidth;
+    padding: 20px;
+    background: $backgroundColor;
+    border-radius: $loginRadius;
+    border-top: 5px solid $loginRed;
+    margin: 0 auto;
+
+    h1{
+        text-align: center;
+        color: $fontColor;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    input{
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid $loginBorderColor;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-family: $mainFont;
+        padding: 0 20px 0 50px;
+        outline: none;
+    }
+
+    input:active{
+        border: 1px solid #ff656c;
+    }
+
+    input#username{
+        background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+        background-size: 16px 80px;
+    }
+    input#username:focus{
+        background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+        background-size: 16px 80px;
+        border: 1px solid #ff656c;
+    }
+    input#password {
+        background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+        background-size: 16px 80px;
+    }
+    input#password:focus {
+        background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+        background-size: 16px 80px;
+        border: 1px solid #ff656c;
+    }
+
+
+
+    .buttonContainer{
+        width:100%;
+    }
+    .buttonDiv{
+        width:45%;
+        display:inline-block;
+        height:40px;
+        margin:6px;
+        vertical-align:top;
+
+        button {
+            width: 100%;
+            height: 40px;
+            background: $loginRed;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #e15960;
+            color: $white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-family: $mainFont;
+            outline: none;
+            cursor: pointer;
+        }
+    } 
+
+
+
+}
+
+.headImage{
+    max-width:$siteWidth;
+    margin:auto;
+    padding-top:15px;
+    img{
+        width:100%;
+    }
+}
+
+.top{
+    margin-top:0px;
+    padding-top:0px;
+}
+
+.userView{
+    .storeLogo{
+        text-align: center;
+    }
+    .modelEdit{
+        max-width:$siteWidth;
+        margin:auto;
+        text-align:left;
+    }
+}
+
+
+
+.mother{
+    text-align:center;
+}
+
+
+
+.welcomText{
+    font-family: $mainFont;
+    font-size: 14pt;
+}
+
+
+.adminEdit{
+    position:fixed;
+    top:0;
+    right:10px;
+    font-size: 25px;
+}
+.redTop{
+    margin-top:-40px;
+    border-radius:5px;
+    background: #fff;
+    border-top:5px solid #ff656c;
+}
+
+h1{
+    text-align: center;
+    color: $fontColor;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+.refreshList{
+    margin-top:5px;
+    button{
+        border-radius:5px;
+        padding:10px;
+    }
+}
+
+
+.eventList{
+    border:1px solid $black; 
+    padding:25px; 
+    border-radius:5px;
+    box-shadow: 1px 1px 9px 2px rgb(238, 236, 236) inset;
+}
+
+
+
+
+
+/************ This is the admin css ******************/
+.modelEdit{
+    /*border:2px solid black; */
+    max-width:$siteWidth; 
+    height:auto; 
+    margin-bottom:10px;
+    margin:auto;
+    padding:10px;
+    background-color:$backgroundColor;
+}
+.itemContainer{
+    width:100%;
+}
+.storeNameEdit{
+    border-bottom:1px solid black;
+    margin:10px;
+}
+.itemsEdit{
+     text-align: left;
+     font-family: $mainFont;
+    font-size: 14pt;
+     
+}
+.priceEdit{
+     text-align: right;
+     
+}
+
+#sortable{
+    list-style-type: none;
+}
+/*****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
