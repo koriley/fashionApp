@@ -20,7 +20,10 @@ echo "<script> var level=$level;"
 ?>
 
 <div id="edit" class="adminEdit"><span aria-hidden="true">&times;</span>EXIT</div>
+<div class="adminButtons">
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addModel">Add Model</button>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#storeModal" id="addStore">Add Store</button>
+</div>
 
 <!-- the add model modal-->
 
@@ -60,6 +63,43 @@ echo "<script> var level=$level;"
     </div>
 </div>
 <!-- end modal -->
+
+<!-- the add store modal-->
+
+<div class="modal fade reload addStore"  id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a Store/Salon Combo</h4>
+            </div>
+            <div class="modal-body">
+                <h1>Store Information</h1>
+                <input type="text" value="" placeholder="Store Name" id="storeName" />
+                <input type="text" value="" placeholder="Store Link" id="storeLink" />
+                <input type="file" value="" placeholder="Store Image" id="storeImage" />
+                <h1>Salon Information</h1>
+                <input type="text" value="" placeholder="Salon Name" id="salonName" />
+                <input type="text" value="" placeholder="Salon Link" id="salonLink" />
+                <input type="file" value="" placeholder="Salon Image" id="salonImage" />
+                
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="saveStore" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+           
+
+        </script>
+    </div>
+</div>
+<!-- end modal -->
+
 <div id="newResult"></div>
 
 <script>
@@ -116,6 +156,20 @@ echo "<script> var level=$level;"
                     
                     //jQuery('#newResult').load('addModel/control/control_getModel.php');
                 $('#myModal').modal('toggle');
+            });
+            
+            /** 
+             * This is the add store jQuery
+             * after user fill in input, we will need to send the info to php to 
+             * save the image / update the db with store, info salon info, and image file location. 
+             **/
+            jQuery('#saveStore').click(function(){
+                var storeName= jQuery('#storeName').val();
+                var storeLink = jQuery('#storeLink').val();
+                file = jQuery('#storeImage')[0].files[0];
+                jQuery.post('addModel/control/control_addStore.php',{storeName:storeName, storeLink:storeLink, storeImage:file});
+                //alert(file);
+                
             });
      
 </script>
