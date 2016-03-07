@@ -1,2 +1,45 @@
-s[04-Feb-2016 15:20:02 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home4/gocoupon/public_html/fashionation/addModel/modules/module_model.php on line 61
-[05-Feb-2016 11:45:55 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home4/gocoupon/public_html/fashionation/addModel/control/control_getModel.php on line 118
+[07-Mar-2016 15:26:53 America/Chicago] PHP Warning:  unlink(../../images/): Is a directory in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 20
+[07-Mar-2016 15:50:22 America/Chicago] PHP Warning:  move_uploaded_file(../../images/../../images/417Logo.png): failed to open stream: No such file or directory in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 45
+[07-Mar-2016 15:50:22 America/Chicago] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpqDbR3x' to '../../images/../../images/417Logo.png' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 45
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:07 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:28:12 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'name' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 24
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
+[07-Mar-2016 16:29:02 America/Chicago] PHP Warning:  Illegal string offset 'type' in /home4/gocoupon/public_html/417fashionation.com/addModel/control/control_uploadImage.php on line 26
