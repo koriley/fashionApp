@@ -75,14 +75,15 @@ echo "<script> var level=$level;"
             </div>
             <div class="modal-body">
                 <h1>Store Information</h1>
-                <input type="text" value="" placeholder="Store Name" id="storeName" />
+                <input type="text" value="" placeholder="Store Name" id="myStoreName" />
                 <input type="text" value="" placeholder="Store Link" id="storeLink" />
                 <input type="file" value="" placeholder="Store Image" id="storeImage" />
                 <h1>Salon Information</h1>
                 <input type="text" value="" placeholder="Salon Name" id="salonName" />
                 <input type="text" value="" placeholder="Salon Link" id="salonLink" />
                 <input type="file" value="" placeholder="Salon Image" id="salonImage" />
-
+                <h1>Order in runway show</h1>
+                <input type="test" value="" placeholder="Order" id="storeOrder" />
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -155,7 +156,7 @@ echo "<script> var level=$level;"
 
 
         //jQuery('#newResult').load('addModel/control/control_getModel.php');
-        $('#myModal').modal('toggle');
+        jQuery('#myModal').modal('toggle');
     });
 
     /** 
@@ -164,23 +165,25 @@ echo "<script> var level=$level;"
      * save the image / update the db with store, info salon info, and image file location. 
      **/
     jQuery('#saveStore').click(function () {
-        var storeName = jQuery('#storeName').val();
+        var storeName = jQuery('#myStoreName').val();
         var storeLink = jQuery('#storeLink').val();
         //file = jQuery('#storeImage')[0].files[0];
-        
+
         var salonName = jQuery('#salonName').val();
         var salonLink = jQuery('#salonLink').val();
+        var order = jQuery('#storeOrder').val();
         //file2 = jQuery('#salonImage')[0].files[0];
         // jQuery.post('addModel/control/control_addStore.php',{storeName:storeName, storeLink:storeLink, storeImage:file});
         //alert(file);
-
+//alert(storeName);
         var formData = new FormData();
         formData.append('file1', jQuery('#storeImage')[0].files[0]);
         formData.append('file2', jQuery('#salonImage')[0].files[0]);
         formData.append('storeName', storeName);
-        formData.append('storeLiink', storeLink);
+        formData.append('storeLink', storeLink);
         formData.append('salonName', salonName);
         formData.append('salonLink', salonLink);
+        formData.append('storeOrder', order);
 
         jQuery.ajax({
             url: 'addModel/control/control_addStore.php',
@@ -190,8 +193,8 @@ echo "<script> var level=$level;"
             processData: false, // tell jQuery not to process the data
             contentType: false, // tell jQuery not to set contentType
             success: function (data) {
-             //console.log(data);
-               // alert(data);
+                console.log(data);
+                // alert(data);
             }
         });
 
