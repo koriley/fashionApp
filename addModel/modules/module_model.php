@@ -20,6 +20,13 @@ class model{
         return $add = 'yes';
     }
     
+    function addStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order){
+        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, order) VALUES (NULL,'$storeName', '$storeLink', '$storeImage', '$salonName', '$salonLink', '$salonImage', '$order')";
+        $res = $dbCon->select($sql);
+        
+        return $add = 'yes';
+    }
+    
     function getModel($dbCon){
         $sql = "SELECT * FROM model ORDER BY modelNum ASC";
         $res = $dbCon->select($sql);
