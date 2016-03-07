@@ -160,6 +160,12 @@ h1 {
 #sortable {
   list-style-type: none; }
 
+.addStore input {
+  display: block;
+  width: 100%;
+  margin: 5px;
+  border-radius: 2px; }
+
 /*****************************************************/
 
 /*# sourceMappingURL=main.css.map */
