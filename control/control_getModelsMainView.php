@@ -85,22 +85,22 @@ if ($getUserLikes != '') {
 
 
 <script>
-    jQuery(document).ready(function() {
-        jQuery('input[id="itemSelect"]').each(function() {
+    jQuery(document).ready(function () {
+        jQuery('input[id="itemSelect"]').each(function () {
             jQuery(this).hide();
             var amILiked = jQuery(this).parent().attr('data-liked');
-            if(amILiked === 'true'){
+            if (amILiked === 'true') {
                 jQuery(this).after('<img id="like" src="/img/Fashionation16_WebApp_GoldStar.png" style="padding-right:5px;" />');
                 jQuery(this).after('<img id="unlike" src="/img/Fashionation16_WebApp_BlackStar2.png" style=" display:none; padding-right:5px;" />');
-                jQuery(this).parent().css({'color':'#DEB065'});
-            }else{
-            jQuery(this).after('<img id="unlike" src="/img/Fashionation16_WebApp_BlackStar2.png" style="padding-right:5px;" />');
-            jQuery(this).after('<img id="like" src="/img/Fashionation16_WebApp_GoldStar.png" style="display:none; padding-right:5px;" />');
-        jQuery(this).parent().css({'color':'#000'});
-        }
+                jQuery(this).parent().css({'color': '#DEB065'});
+            } else {
+                jQuery(this).after('<img id="unlike" src="/img/Fashionation16_WebApp_BlackStar2.png" style="padding-right:5px;" />');
+                jQuery(this).after('<img id="like" src="/img/Fashionation16_WebApp_GoldStar.png" style="display:none; padding-right:5px;" />');
+                jQuery(this).parent().css({'color': '#000'});
+            }
         });
     });
-    jQuery('.itemsEdit').click(function() {
+    jQuery('.itemsEdit').click(function () {
         var isChecked = jQuery(this).children('input').prop('checked');
         var liked = jQuery(this).attr('data-liked');
         //alert(liked);
@@ -109,13 +109,13 @@ if ($getUserLikes != '') {
         if (liked === 'true') {
             jQuery(this).children('#like').hide();
             jQuery(this).children('#unlike').show();
-            jQuery(this).css({'color':'#000'});
+            jQuery(this).css({'color': '#000'});
             jQuery(this).children('input').prop('checked', false);
             jQuery(this).attr('data-liked', 'false');
             parent = jQuery(this).parent('.modelEdit').data('model');
             var parentID = jQuery(this).parent('.modelEdit').attr('id');
             //alert(parentID);
-            jQuery('#' + parentID).children(".itemsEdit").each(function() {
+            jQuery('#' + parentID).children(".itemsEdit").each(function () {
                 //alert('here');
                 var findMyLikes = jQuery(this).attr('data-liked');
                 //alert(findMyLikes);
@@ -132,13 +132,13 @@ if ($getUserLikes != '') {
         if (liked === 'false') {
             jQuery(this).children('#like').show();
             jQuery(this).children('#unlike').hide();
-            jQuery(this).css({'color':'#DEB065'});
+            jQuery(this).css({'color': '#DEB065'});
             jQuery(this).children('input').prop('checked', true);
             jQuery(this).attr('data-liked', 'true');
             parent = jQuery(this).parent('.modelEdit').data('model');
             var parentID = jQuery(this).parent('.modelEdit').attr('id');
             //alert(parentID);
-            jQuery('#' + parentID).children(".itemsEdit").each(function() {
+            jQuery('#' + parentID).children(".itemsEdit").each(function () {
                 //alert('here');
                 var findMyLikes = jQuery(this).attr('data-liked');
                 //alert(findMyLikes);
