@@ -211,14 +211,14 @@ h1{
     margin:10px;
 }
 .itemsEdit{
-     text-align: left;
-     font-family: $mainFont;
+    text-align: left;
+    font-family: $mainFont;
     font-size: 14pt;
-     
+
 }
 .priceEdit{
-     text-align: right;
-     
+    text-align: right;
+
 }
 
 #sortable{
@@ -234,7 +234,16 @@ h1{
     }
 }
 /*****************************************************/
+.addModel{
+    input{
+        margin:5px;
 
+    }
+    #storeSelect{
+        width:100%;
+        margin:5px;
+    }
+}
 
 /* 
 edit store
