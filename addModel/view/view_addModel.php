@@ -34,8 +34,8 @@ echo "<script> var level=$level;"
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Add a Model</h4>
             </div>
-            <div class="modal-body">
-                <input type="text" value="" placeholder="Store Name" id="storeName" />
+            <div class="modal-body addModel">
+                <div id="storeNames"></div>
                 <input type="text" value="" placeholder="Model Order Number" id="modelNum" />
                 <div class="multi-field-wrapper_add">
                     <div class="multi-fields_add">
@@ -111,6 +111,7 @@ echo "<script> var level=$level;"
         jQuery('#newResult').load('addModel/control/control_getModel.php');
     });
 
+jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
 
     $('.multi-field-wrapper_add').each(function () {
         var $wrapper = $('.multi-fields_add', this);
@@ -125,7 +126,7 @@ echo "<script> var level=$level;"
     var items = '';
     var price = '';
     jQuery('#save').click(function () {
-        var store = jQuery('#storeName').val();
+        var store = jQuery('#storeSelect').val();
         var modelNum = jQuery('#modelNum').val();
         jQuery('.multi-field_add .items').each(function () {
             if (items === '') {
