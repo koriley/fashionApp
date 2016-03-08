@@ -21,7 +21,14 @@ class model{
     }
     
     function addStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order){
-        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, runwayOrder) VALUES (NULL,'$storeName', '$storeLink', '$storeImage', '$salonName', '$salonLink', '$salonImage', '$order')";
+        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, runwayOrder) VALUES (NULL,'$storeName', '$storeImage', '$storeLink', '$salonName', '$salonImage', '$salonLink', '$order')";
+        $res = $dbCon->select($sql);
+        echo $sql;
+        return $add = 'yes';
+    }
+    
+    function updatedStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order, $id){
+        $sql = "UPDATE store SET id='".$id."', storeName='".$storeName."',storeImage='".$storeImage."',storeLink='".$storeLink."',salonName='".$salonName."',salonImage='".$salonImage."',salonLink='".$salonLink."',runwayOrder='".$order."' WHERE id=$id";
         $res = $dbCon->select($sql);
         echo $sql;
         return $add = 'yes';
@@ -33,6 +40,21 @@ class model{
        // echo $sql;
        // var_dump($res);
         return $res;
+    }
+    
+    function getStores($dbCon){
+        $sql = "SELECT * FROM store ORDER BY runwayOrder";
+        $res = $dbCon->select($sql);
+        return $res;
+    }
+    
+    function deleteStore($dbCon, $deleteID, $image1, $image2){
+        //first lets find the images and delete those.
+       $path = '../../';
+       unlink('../..'.$image1);
+       unlink('../..'.$image2);
+       $sql = 'DELETE FROM store WHERE id="'.$deleteID.'"';
+       $res = $dbCon->insert($sql);
     }
     
     function deleteModel($dbCon, $id){
