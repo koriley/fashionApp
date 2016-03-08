@@ -73,7 +73,7 @@ echo "<script> var level=$level;"
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Add a Store/Salon Combo</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body editStoreBody">
                 <h1>Store Information</h1>
                 <input type="text" value="" placeholder="Store Name" id="myStoreName" />
                 <input type="text" value="" placeholder="Store Link" id="storeLink" />
@@ -86,6 +86,7 @@ echo "<script> var level=$level;"
                 <input type="test" value="" placeholder="Order" id="storeOrder" />
 
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="editStore">Edit Store</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" id="saveStore" class="btn btn-primary">Save changes</button>
                 </div>
@@ -197,7 +198,11 @@ echo "<script> var level=$level;"
                 // alert(data);
             }
         });
-
+        jQuery('#storeModal').modal('toggle');
+    });
+    
+    jQuery('#editStore').click(function(){
+        jQuery('.editStoreBody').load('addModel/control/control_storeEdit.php');
     });
 
 </script>
