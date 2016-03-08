@@ -22,7 +22,7 @@ class model{
     }
     
     function getStores($dbCon){
-        $sql = "SELECT DISTINCT store FROM model ORDER BY modelNum ASC";
+        $sql = "SELECT * FROM store ORDER BY runWayOrder ASC";
         $res = $dbCon->select($sql);
         return $res;
     }
