@@ -19,7 +19,7 @@ $res = $addModel->getStores($dbCon);
  * Array ( [0] => Array ( [id] => 1 [storeName] => test [storeImage] => http://www.something.com [storeLink] => ../../images/417Logo.png [salonName] => testSalon [salonImage] => www.something.com [salonLink] => ../../images/fallout-guy-psd-457127.png [runwayOrder] => 1 ) )
  */
 $storeCount = count($res);
-echo "<select id='storeSelect'>";
+echo "<select id='storeSelectEdit'>";
 
 for ($k = 0; $k <= $storeCount - 1; $k++) {
     if ($res[$k]['storeName'] != '') {
@@ -32,30 +32,30 @@ for ($i = 0; $i <= $storeCount; $i++) {
 
 
         if ($i == 0) {
-            echo "<div class='" . $res[$i]['storeName'] . " store'>";
+            echo "<div class='" . $res[$i]['storeName'] . " store store_".$res[$i]['id']."'>";
         } else {
-            echo "<div class='" . $res[$i]['storeName'] . " store' style='display:none;'>";
+            echo "<div class='" . $res[$i]['storeName'] . " store store_".$res[$i]['id']."' style='display:none;'>";
         }
 
         echo "<h1>" . $res[$i]['storeName'] . " Information</h1>";
 
-        echo '<input type = "text" value = "' . $res[$i]['storeName'] . '" id = "myStoreName" />
-<input type = "text" value = "' . $res[$i]['storeLink'] . '"  id = "storeLink" />
+        echo '<input type = "text" value = "' . $res[$i]['storeName'] . '" id = "myStoreName_'.$res[$i]['id'].'"  />
+<input type = "text" value = "' . $res[$i]['storeLink'] . '"  id = "storeLink_'.$res[$i]['id'].'" />
 <img src="' . $res[$i]['storeImage'] . '"  />
-    <input type = "file" value = "Change Store Image" placeholder = "Salon Image" id = "storeImage" />
+    <input type = "file" value = "Change Store Image" placeholder = "Salon Image" id = "storeImage_'.$res[$i]['id'].'" />
 <h1>Salon Information</h1>
-<input type = "text" value = "' . $res[$i]['salonName'] . '" placeholder = "Salon Name" id = "salonName" />
-<input type = "text" value = "' . $res[$i]['salonLink'] . '" placeholder = "Salon Link" id = "salonLink" />
+<input type = "text" value = "' . $res[$i]['salonName'] . '" placeholder = "Salon Name" id = "salonName_'.$res[$i]['id'].'" />
+<input type = "text" value = "' . $res[$i]['salonLink'] . '" placeholder = "Salon Link" id = "salonLink_'.$res[$i]['id'].'" />
 <img src="' . $res[$i]['salonImage'] . '"  />
-    <input type = "file" value = "Change Salon Image" placeholder = "Salon Image" id = "salonImage" />
+    <input type = "file" value = "Change Salon Image" placeholder = "Salon Image" id = "salonImage_'.$res[$i]['id'].'" />
 <h1>Order in runway show</h1>
-<input type = "test" value = "' . $res[$i]['runwayOrder'] . '" placeholder = "Order" id = "storeOrder" />';
+<input type = "test" value = "' . $res[$i]['runwayOrder'] . '" placeholder = "Order" id = "storeOrder_'.$res[$i]['id'].'" />';
 
 
         echo '<div class = "modal-footer">
-<button type = "button" class = "btn btn-primary" id = "exitStore">Exit Edit Store</button>
-<button type = "button" id = "deleteStore" data-delete="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '" class = "btn btn-danger">Delete Store</button>
-<button type = "button" id = "saveStore" class = "btn btn-primary" data-id="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '">Edit Store</button>
+<button type = "button" class = "btn btn-primary exitStore" id = "exitStore">Exit Edit Store</button>
+<button type = "button" id = "deleteStore" data-delete="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '" class = "btn btn-danger deleteStore">Delete Store</button>
+<button type = "button" id = "editStore" class = "btn btn-primary editStore" data-id="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '">Edit Store</button>
 </div>';
         echo "</div>";
     }
@@ -73,7 +73,7 @@ for ($i = 0; $i <= $storeCount; $i++) {
 <script>
 
     //this will change the div depending on what store you have selected.
-    jQuery("#storeSelect").on('change', function () {
+    jQuery("#storeSelectEdit").on('change', function () {
         var newStore = jQuery(this).val();
         jQuery('.store').each(function () {
             jQuery(this).hide();
@@ -82,12 +82,12 @@ for ($i = 0; $i <= $storeCount; $i++) {
     });
 
     //exit the edit we will just reload the view_addModel.php
-    jQuery('#exitStore').click(function () {
+    jQuery('.exitStore').click(function () {
         jQuery('#mother').load('addModel/view/view_addModel.php?level=' + level + '&userID=' + userID);
     });
 
     //delete a store and its images
-    jQuery('#deleteStore').click(function () {
+    jQuery('.deleteStore').click(function () {
         var storeDelete = jQuery(this).attr('data-delete');
         var image1 = jQuery(this).attr('data-storeImage');
         var image2 = jQuery(this).attr('data-salonImage');
@@ -96,25 +96,26 @@ for ($i = 0; $i <= $storeCount; $i++) {
     });
 
     //edit the store and delete old images
-    jQuery('#saveStore').click(function () {
-        var storeName = jQuery('#myStoreName').val();
-        var storeLink = jQuery('#storeLink').val();
+    jQuery('.editStore').click(function () {
+        var storeID = jQuery(this).attr('data-id');
+        var storeName = jQuery('#myStoreName_'+storeID).val();
+        var storeLink = jQuery('#storeLink_'+storeID).val();
         var oldStoreImage = jQuery(this).attr('data-storeImage');
         var storeID = jQuery(this).attr('data-id');
-        var salonName = jQuery('#salonName').val();
-        var salonLink = jQuery('#salonLink').val();
+        var salonName = jQuery('#salonName_'+storeID).val();
+        var salonLink = jQuery('#salonLink_'+storeID).val();
         var oldSalonImage = jQuery(this).attr('data-salonImage');
-        var order = jQuery('#storeOrder').val();
+        var order = jQuery('#storeOrder_'+storeID).val();
 
         var formData = new FormData();
-        if (document.getElementById("storeImage").files.length !== 0) {
-            formData.append('file1', jQuery('#storeImage')[0].files[0]);
+        if (document.getElementById('storeImage_'+storeID).files.length !== 0) {
+            formData.append('file1', jQuery('#storeImage_'+storeID)[0].files[0]);
 
         } else {
             formData.append('file1', '');
         }
-        if (document.getElementById("salonImage").files.length !== 0) {
-            formData.append('file2', jQuery('#salonImage')[0].files[0]);
+        if (document.getElementById('salonImage_'+storeID).files.length !== 0) {
+            formData.append('file2', jQuery('#salonImage_'+storeID)[0].files[0]);
 
         } else {
             formData.append('file2', '');
@@ -136,7 +137,7 @@ for ($i = 0; $i <= $storeCount; $i++) {
             processData: false, // tell jQuery not to process the data
             contentType: false, // tell jQuery not to set contentType
             success: function (data) {
-                console.log(data);
+               // console.log(data);
                 // alert(data);
             }
         });
