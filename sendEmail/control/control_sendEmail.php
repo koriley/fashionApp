@@ -13,7 +13,7 @@ $dbCon = new PDODatabase($dbAdmin, $dbName, $dbPass);
 $addModel = new model(); //model is the name of the class that will add and update model lists
 //for testing purposes, we are going to send the controller a email address to send to before we open it up to the database.
 $eAddress = $_GET['emailAD'];
-$id=1;
+$id = 1;
 //email headers and subject stuff
 $subject = 'Thank You for attending 417 Fashionation';
 
@@ -23,72 +23,117 @@ $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 $from = 'admin@417fashionation.com';
 
-//get all the stores
-$stores = $addModel->getStores($dbCon);
-$storeCount = count($stores);
-
 
 //get the users
-$sql = "SELECT * FROM user WHERE id=$id";
+$sql = "SELECT * FROM user ORDER BY id";
 $user = $dbCon->select($sql);
-$v=0; //this is the real model number
+$userCount = count($user) - 1;
+
+for ($aa = 0; $aa <= $userCount; $aa++) {
+
+    $myName = $user[$aa]['email'];
+   // echo $myName . "<br/>";
+//get all the stores
+    $stores = $addModel->getStores($dbCon);
+    $storeCount = count($stores);
+
+
+
+    $v = 0; //this is the real model number
 //get each model associated with that store
-for($k=0;$k<=$storeCount-1;$k++){
-   // echo $stores[$k]['storeName']."<br/>";
-    $sql = "SELECT * FROM model WHERE store = '".$stores[$k]['storeName']."' ORDER BY modelNum ASC";
-    
-    
-    $model = $dbCon->select($sql);
-   //print_r($model);
-   //echo"<br/>";
-    $first = $model[0]['modelNum'];
-    
-    $modelCount = count($model); 
-    //echo $modelCount;
-    for($e=0;$e<=$modelCount-1;$e++){
-        //get user likes associated with model
-      // echo "model_$v = " . $user[0]["model_$v"];
-        $v++; 
-        
-        // echo $v."<br/>";
-        if($user[0]["model_$v"]!=''){
-            
-          $whatILike = explode('|', $user[0]["model_$v"]);
-          $whatThisModelisWearing = explode('|', $model[$e]['items']);
-          //echo "------------------------------<br/>";
-          //echo " you have items for model $v ";
-          //print_r($whatILike);
-         // echo "<br/>";
-          //echo "these are the items the model $v was wearing<br/>";
-          //print_r($whatThisModelisWearing);
-          $modelWearingCount = count($whatThisModelisWearing);
-         // echo "<br/>";
-          $o=0;
-          for($n=0;$n<=$modelWearingCount-1;$n++){
-              
-              //echo "$whatILike[$o]";
-             if($n == $whatILike[$o]){
-                 $items[$stores[$k]['storeName']][$e] = $whatThisModelisWearing[$n];
-                 
-                 $o++;
-             }
-             
-          }
-          
-         // echo "------------------------------<br/>";
-          
-           
-            
+    for ($k = 0; $k <= $storeCount - 1; $k++) {
+        // echo $stores[$k]['storeName']."<br/>";
+        $sql = "SELECT * FROM model WHERE store = '" . $stores[$k]['storeName'] . "' ORDER BY modelNum ASC";
+
+
+        $model = $dbCon->select($sql);
+        //print_r($model);
+        //echo"<br/>";
+        $first = $model[0]['modelNum'];
+
+        $modelCount = count($model);
+        //echo $modelCount;
+        for ($e = 0; $e <= $modelCount - 1; $e++) {
+            //get user likes associated with model
+            //echo "model_$v = " . $user[$aa]["model_$v"];
+            $v++;
+
+            //echo "<br/>";
+            if ($user[$aa]["model_$v"] != '') {
+
+                $whatILike = explode('|', $user[$aa]["model_$v"]);
+                $whatThisModelisWearing = explode('|', $model[$e]['items']);
+                //echo "------------------------------<br/>";
+                //echo " you have items for model $v ";
+                //print_r($whatILike);
+                //echo "<br/>";
+                // echo "these are the items the model $v was wearing<br/>";
+                // print_r($whatThisModelisWearing);
+                $modelWearingCount = count($whatThisModelisWearing);
+                //echo "<br/>";
+                $o = 0;
+                //echo $modelWearingCount."<br/>";
+                $g=0;
+                /*foreach($whatThisModelisWearing as $key=>$val){
+                    //print_r($val);
+                    if($whatILike[$g] == ''){
+                        $g++;
+                    }
+                    if($key === $whatILike[$g]){
+                        $items[$stores[$k]['storeName']][$e][$o] .= $val;
+                        $g++;
+                        $o++;
+                    }
+                    
+                }*/
+                for ($n = 0; $n <= $modelWearingCount - 1; $n++) {
+
+                    echo "$whatILike[$n]";
+                    if ($o == $whatILike[$n]) {
+                        $items[$stores[$k]['storeName']][$e][$o] .= $whatThisModelisWearing[$n];
+
+                        $o++;
+                    }
+                }
+
+                // echo "------------------------------<br/>";
+            }
         }
-        
     }
-  
-}
 //print_r($myLikes);
-print_r($items);
+    print_r($items);
 
-
-
+    $a = 0;
+    $c = 0;
+    if ($items != '') {
+        foreach ($items as $key => $val) {
+            //print_r($key);
+            echo $myName . "<br/>";
+            if ($key !== $stores[$a]['storeName']) {
+                $a++;
+            }
+            if ($key === $stores[$a]['storeName']) {
+                echo "<table style='border:1px solid black;'>";
+                //echo $stores[$a]['storeName'];
+                echo "<tr><td><img src='" . $stores[$a]['storeImage'] . "'/></td><td><img src='" . $stores[$a]['salonImage'] . "'/></td></tr>";
+            }
+            //print_r($val);
+            $valCount = count($val);
+            for ($b = 0; $b <= $valCount - 1; $b++) {
+                $myItemCount = count($val[$b]);
+                for ($c = 0; $c <= $myItemCount - 1; $c++) {
+                    echo "<tr colspan='2'><td>" . $val[$b][$c] . "</td></tr>";
+                }
+            }
+            $a++;
+            echo "</table>";
+            unset($items);
+        }
+    }
+    
+}
+//print_r($items);
+//print_r($stores);
 
 // this is the message
 /*$message = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
