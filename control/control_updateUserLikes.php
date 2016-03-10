@@ -10,6 +10,6 @@ $addModel = new model(); //model is the name of the class that will add and upda
 $id = strip_tags($_POST['id']);
 $model = strip_tags($_POST['model']);
 $items = strip_tags($_POST['likes']);
-echo $id;
+//echo $id;
 
 $res = $addModel->updateLikes($dbCon, $model, $items, $id);
