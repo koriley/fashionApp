@@ -23,6 +23,7 @@ echo "<script> var level=$level;"
 <div class="adminButtons">
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addModel">Add Model</button>
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#storeModal" id="addStore">Add Store</button>
+    <button class="btn btn-danger btn-lg"   id="sendEmail">Send Email</button>
 </div>
 
 <!-- the add model modal-->
@@ -111,6 +112,10 @@ echo "<script> var level=$level;"
         jQuery('#newResult').load('addModel/control/control_getModel.php');
     });
 
+//creating the send email button and sending the user to the send email functionality
+jQuery('#sendEmail').click(function(){
+    jQuery('#mother').load('/sendEmail/view/view_testEmail.php');
+});
 jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
 
     $('.multi-field-wrapper_add').each(function () {
