@@ -12,8 +12,8 @@ include_once('../../inc/dbl.login.inc.php');
 $dbCon = new PDODatabase($dbAdmin, $dbName, $dbPass);
 $addModel = new model(); //model is the name of the class that will add and update model lists
 //for testing purposes, we are going to send the controller a email address to send to before we open it up to the database.
-$eAddress = $_GET['emailAD'];
-$id = 1;
+//$eAddress = $_GET['emailAD'];
+//$id = 1;
 //email headers and subject stuff
 $subject = 'Thank You for attending 417 Fashionation';
 
@@ -28,115 +28,11 @@ $from = 'admin@417fashionation.com';
 $sql = "SELECT * FROM user ORDER BY id";
 $user = $dbCon->select($sql);
 $userCount = count($user) - 1;
-
+$o = 0;
 for ($aa = 0; $aa <= $userCount; $aa++) {
-
-    $myName = $user[$aa]['email'];
-   // echo $myName . "<br/>";
-//get all the stores
-    $stores = $addModel->getStores($dbCon);
-    $storeCount = count($stores);
-
-
-
-    $v = 0; //this is the real model number
-//get each model associated with that store
-    for ($k = 0; $k <= $storeCount - 1; $k++) {
-        // echo $stores[$k]['storeName']."<br/>";
-        $sql = "SELECT * FROM model WHERE store = '" . $stores[$k]['storeName'] . "' ORDER BY modelNum ASC";
-
-
-        $model = $dbCon->select($sql);
-        //print_r($model);
-        //echo"<br/>";
-        $first = $model[0]['modelNum'];
-
-        $modelCount = count($model);
-        //echo $modelCount;
-        for ($e = 0; $e <= $modelCount - 1; $e++) {
-            //get user likes associated with model
-            //echo "model_$v = " . $user[$aa]["model_$v"];
-            $v++;
-
-            //echo "<br/>";
-            if ($user[$aa]["model_$v"] != '') {
-
-                $whatILike = explode('|', $user[$aa]["model_$v"]);
-                $whatThisModelisWearing = explode('|', $model[$e]['items']);
-                //echo "------------------------------<br/>";
-                //echo " you have items for model $v ";
-                //print_r($whatILike);
-                //echo "<br/>";
-                // echo "these are the items the model $v was wearing<br/>";
-                // print_r($whatThisModelisWearing);
-                $modelWearingCount = count($whatThisModelisWearing);
-                //echo "<br/>";
-                $o = 0;
-                //echo $modelWearingCount."<br/>";
-                $g=0;
-                /*foreach($whatThisModelisWearing as $key=>$val){
-                    //print_r($val);
-                    if($whatILike[$g] == ''){
-                        $g++;
-                    }
-                    if($key === $whatILike[$g]){
-                        $items[$stores[$k]['storeName']][$e][$o] .= $val;
-                        $g++;
-                        $o++;
-                    }
-                    
-                }*/
-                for ($n = 0; $n <= $modelWearingCount - 1; $n++) {
-
-                    echo "$whatILike[$n]";
-                    if ($o == $whatILike[$n]) {
-                        $items[$stores[$k]['storeName']][$e][$o] .= $whatThisModelisWearing[$n];
-
-                        $o++;
-                    }
-                }
-
-                // echo "------------------------------<br/>";
-            }
-        }
-    }
-//print_r($myLikes);
-    print_r($items);
-
-    $a = 0;
-    $c = 0;
-    if ($items != '') {
-        foreach ($items as $key => $val) {
-            //print_r($key);
-            echo $myName . "<br/>";
-            if ($key !== $stores[$a]['storeName']) {
-                $a++;
-            }
-            if ($key === $stores[$a]['storeName']) {
-                echo "<table style='border:1px solid black;'>";
-                //echo $stores[$a]['storeName'];
-                echo "<tr><td><img src='" . $stores[$a]['storeImage'] . "'/></td><td><img src='" . $stores[$a]['salonImage'] . "'/></td></tr>";
-            }
-            //print_r($val);
-            $valCount = count($val);
-            for ($b = 0; $b <= $valCount - 1; $b++) {
-                $myItemCount = count($val[$b]);
-                for ($c = 0; $c <= $myItemCount - 1; $c++) {
-                    echo "<tr colspan='2'><td>" . $val[$b][$c] . "</td></tr>";
-                }
-            }
-            $a++;
-            echo "</table>";
-            unset($items);
-        }
-    }
-    
-}
-//print_r($items);
-//print_r($stores);
-
-// this is the message
-/*$message = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    $noLikes = 0;
+    $store = 0;
+    $message = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>417 Magazine Fashionation</title>
@@ -179,14 +75,14 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 				<tbody>
 					<tr>
 						<td style="width: 60%;"><font color="#ffffff" face="arial, helvetica, sans-serif"><span style="font-size:12px;"><span style="font-family:arial,helvetica,sans-serif;">Thank you for attending Fashionation!</span></span><span style="font-size: 12px;"><b><em></em></b></span></font></td>
-						<td style="text-align: right; color: white; "><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;"><font color="#000000"><a href="#SPCLICKTOVIEW" name="417mag_com" style="color:#ffffff;" xt="SPCLICKTOVIEW">View email in your browser</a></font></span></span></td>
+						<td style="text-align: right; color: white; "><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;"><font color="#000000"></font></span></span></td>
 					</tr>
 				</tbody>
 			</table>
 			</td>
 		</tr>
 		<tr style="text-align: center;">
-			<td><a href="http://www.417mag.com/spa-and-salon-week/" name="header" target="_blank" xt="SPCLICK"><span style="color:#FFFFFF;"></span></a><a href="http://www.417mag.com/spa-and-salon-week/" name="header_2" target="_blank" xt="SPCLICK"><span style="color:#FFFFFF;"><font face="Times"><img contentid="52851b4e-1533d95ee63-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation_eblastheader1.png" spname="Fashionation_eblastheader1.png" src="Fashionation_eblastheader1.png" style="width: 100%; " xt="SPIMAGE" /></font></span></a></td>
+			<td><span style="color:#FFFFFF;"></span></a><a href="http://www.417mag.com/spa-and-salon-week/" name="header_2" target="_blank" xt="SPCLICK"><span style="color:#FFFFFF;"><font face="Times"><img contentid="52851b4e-1533d95ee63-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation_eblastheader1.png" spname="Fashionation_eblastheader1.png" src="http://www.417fashionation.com/imgs/Fashionation_eblastheader3.png" style="width: 100%; " xt="SPIMAGE" /></font></span></td>
 		</tr>
 		<tr>
 			<td style="margin-bottom: 5px;">
@@ -197,18 +93,90 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 			Use the&nbsp;Spring Fling Shopping Pass you got tonight to receive 25%<br />
 			off at participating retailers through April16!<br />
 			<br />
-			<img border="0" contentid="52851b4e-1533e6f2b23-943e27de0c8b91cc3fcf1475c3e5d726" height="37" name="Fashionation16_YourLikesFromShow.jpg" spname="Fashionation16_YourLikesFromShow.jpg" src="Fashionation16_YourLikesFromShow.jpg" width="231.044" xt="SPIMAGE" /><br />
-			<strong><img border="0" contentid="52851b4e-1533e7a752b-943e27de0c8b91cc3fcf1475c3e5d726" height="87.551" name="unnamed (1).png" spname="unnamed (1).png" src="unnamed (1).png" width="220" xt="SPIMAGE" /></strong><br />
-			Long lace tunic,$28.99<br />
-			Distressed jeans,$34.99<br />
-			Necklace,$14.99</span></span></div>
-			<font face="Times"></font></td>
+			<img border="0" contentid="52851b4e-1533e6f2b23-943e27de0c8b91cc3fcf1475c3e5d726" height="37" name="Fashionation16_YourLikesFromShow.png" spname="Fashionation16_YourLikesFromShow.png" src="http://www.417fashionation.com/imgs/Fashionation16_YourLikesFromShow.jpg" width="231.044" xt="SPIMAGE" /><br />';
+
+
+    $myName = $user[$aa]['email'];
+    // echo $myName . "<br/>";
+//get all the stores
+    $stores = $addModel->getStores($dbCon);
+    $storeCount = count($stores);
+
+
+
+    $v = 0; //this is the real model number
+//get each model associated with that store
+    for ($k = 0; $k <= $storeCount - 1; $k++) {
+        // echo $stores[$k]['storeName']."<br/>";
+        $sql = "SELECT * FROM model WHERE store = '" . $stores[$k]['storeName'] . "' ORDER BY modelNum ASC";
+
+
+        $model = $dbCon->select($sql);
+        //print_r($model);
+        //echo"<br/>";
+        $first = $model[0]['modelNum'];
+
+        $modelCount = count($model);
+        //echo $modelCount;
+        //echo $stores[$k]['storeName']."<br/>";
+        for ($e = 0; $e <= $modelCount - 1; $e++) {
+            //get user likes associated with model
+            //echo "model_$v = " . $user[$aa]["model_$v"];
+            $v++;
+
+            //echo "<br/>";
+            if ($user[$aa]["model_$v"] != '') {
+if($store == 0){
+    $message .= "<strong><a href='" . $stores[$k]['storeLink'] . "'><img src='http://www.417fashionation.com/" . $stores[$k]['storeImage'] . "' /></a><a href='" . $stores[$k]['salonLink'] . "'><img src='http://417fashionation.com" . $stores[$k]['salonImage'] . "' /></a></strong><br/>";
+        $store = 1;
+}
+                $whatILike = explode('|', $user[$aa]["model_$v"]);
+                $whatThisModelisWearing = explode('|', $model[$e]['items']);
+                $itemPrice = explode('|', $model[$e]['price']);
+                $priceCount = count($itemPrice);
+                for($ke=0;$ke<=$priceCount-1;$ke++){
+                    $itemPrice[$ke] = str_replace('$', '', $itemPrice[$ke]);
+                }
+                $wearingCount = count($whatILike);
+                if ($whatILike != '') {
+                    
+                    for ($x = 0; $x <= $wearingCount; $x++) {
+                        if ($whatThisModelisWearing[$whatILike[$x]] != '') {
+                            //echo $whatThisModelisWearing[$whatILike[$x]]."<br/>";
+                            $noLikes = 1;
+                            if($itemPrice[$whatILike[$x]] == ''){
+                            $message .= $whatThisModelisWearing[$whatILike[$x]] . "<br/>";
+                            }else{
+                            $message .= $whatThisModelisWearing[$whatILike[$x]] . ", $".$itemPrice[$whatILike[$x]]."<br/>";    
+                            }
+                        }
+                    }
+                }
+               
+                //echo $whatThisModelisWearing[$whatILike];
+                //echo "------------------------------<br/>";
+                //echo " you have items for model $v ";
+                // print_r($whatILike);
+                // echo "<br/>";
+                // echo "these are the items the model $v was wearing<br/>";
+                //  print_r($whatThisModelisWearing);
+                // echo "<br/>";
+            }
+
+        }
+        $message .= "<br/>";
+        $store = 0;
+    }
+
+
+
+$message .= '<font face="Times"></font></td>
 		</tr>
 		<tr>
 			<td>
-			<div style="text-align:center; margin-top:10px;"><span style="font-size:14px;"><span style="font-family:arial,helvetica,sans-serif;"><strong><a href="https://www.facebook.com/acaciaspaspringfield/?fref=ts" name="www_facebook_com_acaciaspaspringfie" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533e65f1ad-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation16_WebApp_BlackBar6004.jpg" spname="Fashionation16_WebApp_BlackBar6004.jpg" src="Fashionation16_WebApp_BlackBar6004.jpg" xt="SPIMAGE" /><br />
+			<div style="text-align:center; margin-top:10px;"><span style="font-size:14px;"><span style="font-family:arial,helvetica,sans-serif;"><strong><a href="https://www.facebook.com/acaciaspaspringfield/?fref=ts" name="www_facebook_com_acaciaspaspringfie" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533e65f1ad-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation16_WebApp_BlackBar6004.png" spname="Fashionation16_WebApp_BlackBar6004.png" src="http://www.417fashionation.com/imgs/Fashionation16_WebApp_BlackBar600.jpg" xt="SPIMAGE" /><br />
 			<br />
-			<img border="0" contentid="52851b4e-1533e30f62b-943e27de0c8b91cc3fcf1475c3e5d726" height="35.644" name="Fashionation16_Participants.png" spname="Fashionation16_Participants.png" src="Fashionation16_Participants.png" width="99.803" xt="SPIMAGE" /><br />
+			<img border="0" contentid="52851b4e-1533e30f62b-943e27de0c8b91cc3fcf1475c3e5d726" height="35.644" name="Fashionation16_Participants.png" spname="Fashionation16_Participants.png" src="http://www.417fashionation.com/imgs/Fashionation16_Participants.png" width="99.803" xt="SPIMAGE" /><br />
 			ACACIA SPA</a></strong><strong>&nbsp;</strong><a href="https://www.facebook.com/AmeliaMaddenBras/?fref=ts" name="www_facebook_com_AmeliaMaddenBras__" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">AMELIA MADDEN BRA SHOPPE</a>&nbsp;<strong><a href="https://www.facebook.com/BlueRavenEmporium/?fref=ts" name="www_facebook_com_BlueRavenEmporium_" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">BLUE RAVEN EMPORIUM</a></strong>&nbsp;<br />
 			<a href="https://www.facebook.com/browneyedgirlsgifts/?fref=ts" name="www_facebook_com_browneyedgirlsgift" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">BROWN EYED GIRLS</a><strong>&nbsp;</strong><strong><a href="https://www.facebook.com/springfieldcuttingedge/?fref=ts" name="www_facebook_com_springfieldcutting" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">THE CUTTING EDGE SALON</a></strong>&nbsp;<a href="https://www.facebook.com/DowntownDapper/?fref=ts" name="www_facebook_com_DowntownDapper__fr" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">DAPPER</a><br />
 			&nbsp;<strong><a href="https://www.facebook.com/Emerald-Salon-and-Spa-589943254389783/?fref=ts" name="www_facebook_com_Emerald_Salon_and_" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">EMERALD SALON &amp; SPA</a></strong>&nbsp;<a href="https://www.facebook.com/Fashion-House-188098224535758/?fref=ts" name="www_facebook_com_Fashion_House_1880" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">FASHION HOUSE</a>&nbsp;<strong><a href="https://www.facebook.com/GroveSpa/?fref=ts" name="www_facebook_com_GroveSpa__fref_ts" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">GROVE SPA</a></strong>&nbsp;<br />
@@ -221,13 +189,13 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 			<em>LEXUS LOUNGE AND VIP DECOR BY </em><em><a href="https://www.facebook.com/Ellecordesignandgifts/?fref=ts" name="www_facebook_com_Ellecordesignandgi" style="text-decoration:none;color:#000000;" target="_blank" xt="SPCLICK">ELLECOR DESIGN &amp; GIFTS</a></em></span></span><em></em><br />
 			<br />
 			<br />
-			<img border="0" contentid="52851b4e-1533e30f61e-943e27de0c8b91cc3fcf1475c3e5d726" height="35.644" name="Fashionation16_Sponsors.png" spname="Fashionation16_Sponsors.png" src="Fashionation16_Sponsors.png" width="80" xt="SPIMAGE" /></div>
+			<img border="0" contentid="52851b4e-1533e30f61e-943e27de0c8b91cc3fcf1475c3e5d726" height="35.644" name="Fashionation16_Sponsors.png" spname="Fashionation16_Sponsors.png" src="http://www.417fashionation.com/imgs/Fashionation16_Sponsors.png" width="80" xt="SPIMAGE" /></div>
 
 			<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 300px;">
 				<tbody>
 					<tr>
 						<td><span style="font-size:11px;"><span style="font-family:arial,helvetica,sans-serif;">PRESENTED BY</span></span></td>
-						<td><a href="http://www.swanndermatology.com/" name="swann logo" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4316-943e27de0c8b91cc3fcf1475c3e5d726" height="64.32" name="SwannLogoNEW.jpg" spname="SwannLogoNEW.jpg" src="SwannLogoNEW.jpg" width="160" xt="SPIMAGE" /></a></td>
+						<td><a href="http://www.swanndermatology.com/" name="swann logo" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4316-943e27de0c8b91cc3fcf1475c3e5d726" height="64.32" name="SwannLogoNEW.png" spname="SwannLogoNEW.png" src="http://www.417fashionation.com/imgs/SwannLogoNEW.png" width="160" xt="SPIMAGE" /></a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -236,30 +204,30 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 				<tbody>
 					<tr>
 						<td>
-						<div style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="vip party" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42f2-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_VIP22.png" spname="Fashionation16_VIP22.png" src="Fashionation16_VIP22.png" width="112.821" xt="SPIMAGE" /></a>&nbsp;&nbsp;</div>
+						<div style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="vip party" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42f2-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_VIP22.png" spname="Fashionation16_VIP22.png" src="http://www.417fashionation.com/imgs/Fashionation16_VIP.png" width="112.821" xt="SPIMAGE" /></a>&nbsp;&nbsp;</div>
 						</td>
 						<td><br />
-						<a href="http://missouriwine.org/" name="mo wines" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4347-943e27de0c8b91cc3fcf1475c3e5d726" height="58.252" name="MOWineLogo_black2.png" spname="MOWineLogo_black2.png" src="MOWineLogo_black2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="http://missouriwine.org/" name="mo wines" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4347-943e27de0c8b91cc3fcf1475c3e5d726" height="58.252" name="MOWineLogo_black2.png" spname="MOWineLogo_black2.png" src="http://www.417fashionation.com/imgs/MOWineLogo_black.png" width="60" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="http://phenixbrands.com/" name="stiletto" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4303-943e27de0c8b91cc3fcf1475c3e5d726" name="stiletto_black2.png" spname="stiletto_black2.png" src="stiletto_black2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="http://phenixbrands.com/" name="stiletto" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4303-943e27de0c8b91cc3fcf1475c3e5d726" name="stiletto_black2.png" spname="stiletto_black2.png" src="http://www.417fashionation.com/imgs/stiletto_black.png" width="60" xt="SPIMAGE" /></a></td>
 					</tr>
 					<tr>
-						<td style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="main event" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4321-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_MainEvent22.jpg" spname="Fashionation16_MainEvent22.jpg" src="Fashionation16_MainEvent22.jpg" width="114.38" xt="SPIMAGE" /></a></td>
+						<td style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="main event" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4321-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_MainEvent22.png" spname="Fashionation16_MainEvent22.png" src="http://www.417fashionation.com/imgs/Fashionation16_MainEvent.png" width="114.38" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="http://alice955.iheart.com/" name="alice" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42c3-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="AliceLogo_black2.png" spname="AliceLogo_black2.png" src="AliceLogo_black2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="http://alice955.iheart.com/" name="alice" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42c3-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="AliceLogo_black2.png" spname="AliceLogo_black2.png" src="http://www.417fashionation.com/imgs/AliceLogo_black.png" width="60" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="http://www.millerlite.com/AV" name="miller" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533db99592-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="LavishlyTan_black.jpg" spname="LavishlyTan_black.jpg" src="LavishlyTan_black.jpg" width="60" xt="SPIMAGE" /></a></td>
+						<a href="http://www.millerlite.com/AV" name="miller" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533db99592-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="LavishlyTan_black.png" spname="LavishlyTan_black.png" src="http://www.417fashionation.com/imgs/LavishlyTan_black.jpg" width="60" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="http://www.millerlite.com/AV" name="miller" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42cd-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="ML_black2.png" spname="ML_black2.png" src="ML_black2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="http://www.millerlite.com/AV" name="miller" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42cd-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="ML_black2.png" spname="ML_black2.png" src="http://www.417fashionation.com/imgs/ML_black.png" width="60" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="https://www.facebook.com/reliablelexus/?fref=ts" name="lexus" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533db99587-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="QCMoto_black.jpg" spname="QCMoto_black.jpg" src="QCMoto_black.jpg" width="60" xt="SPIMAGE" /></a></td>
+						<a href="https://www.facebook.com/reliablelexus/?fref=ts" name="lexus" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533db99587-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="QCMoto_black.png" spname="QCMoto_black.png" src="http://www.417fashionation.com/imgs/QCMoto_black.jpg" width="60" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="https://www.facebook.com/reliablelexus/?fref=ts" name="lexus" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4335-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="lexus_logo_fashination2_blk2.png" spname="lexus_logo_fashination2_blk2.png" src="lexus_logo_fashination2_blk2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="https://www.facebook.com/reliablelexus/?fref=ts" name="lexus" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab4335-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="lexus_logo_fashination2_blk2.png" spname="lexus_logo_fashination2_blk2.png" src="http://www.417fashionation.com/imgs/lexus_logo_fashination2_blk.png" width="60" xt="SPIMAGE" /></a></td>
 					</tr>
 					<tr>
-						<td>&nbsp;&nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="after party" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42b8-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_AfterParty22.jpg" spname="Fashionation16_AfterParty22.jpg" src="Fashionation16_AfterParty22.jpg" width="157.025" xt="SPIMAGE" /></a></td>
+						<td>&nbsp;&nbsp;<a href="http://www.417mag.com/417-Magazine/417-Fashionation/" name="after party" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42b8-943e27de0c8b91cc3fcf1475c3e5d726" height="80" name="Fashionation16_AfterParty22.png" spname="Fashionation16_AfterParty22.png" src="http://www.417fashionation.com/imgs/Fashionation16_AfterParty.png" width="157.025" xt="SPIMAGE" /></a></td>
 						<td><br />
-						<a href="https://www.facebook.com/GroveSpa/?fref=ts" name="grove" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42e0-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="GroveSpa_black2.png" spname="GroveSpa_black2.png" src="GroveSpa_black2.png" width="60" xt="SPIMAGE" /></a></td>
+						<a href="https://www.facebook.com/GroveSpa/?fref=ts" name="grove" target="_blank" xt="SPCLICK"><img border="0" contentid="52851b4e-1533dab42e0-943e27de0c8b91cc3fcf1475c3e5d726" height="60" name="GroveSpa_black2.png" spname="GroveSpa_black2.png" src="http://www.417fashionation.com/imgs/GroveSpa_black.png" width="60" xt="SPIMAGE" /></a></td>
 						<td>&nbsp;</td>
 					</tr>
 				</tbody>
@@ -272,7 +240,7 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 					<tr>
 						<td style=" width: 100%; text-align: center;   background-color: #000000;">
 						<p><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: normal; color:#ffffff;"><strong>FOLLOW US!</strong></span></span></span></p>
-						<span style="font-family:arial,helvetica,sans-serif;"><font color="#000000"><a href="https://www.facebook.com/417mag?fref=ts" name="Facebook" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533d7ab781-943e27de0c8b91cc3fcf1475c3e5d726" name="fbRound2.png" spname="fbRound2.png" src="fbRound2.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://instagram.com/417mag/" name="Instagram" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f590-943e27de0c8b91cc3fcf1475c3e5d726" name="instaRound2.png" spname="instaRound2.png" src="instaRound2.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://www.pinterest.com/417magazine/" name="Pinterest" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f576-943e27de0c8b91cc3fcf1475c3e5d726" name="pinRound2.png" spname="pinRound2.png" src="pinRound2.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://twitter.com/417mag" name="Twitter" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f5ac-943e27de0c8b91cc3fcf1475c3e5d726" name="twitterRound2.png" spname="twitterRound2.png" src="twitterRound2.png" style="max-width: 30px;" xt="SPIMAGE" /></a></font></span></td>
+						<span style="font-family:arial,helvetica,sans-serif;"><font color="#000000"><a href="https://www.facebook.com/417mag?fref=ts" name="Facebook" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533d7ab781-943e27de0c8b91cc3fcf1475c3e5d726" name="fbRound2.png" spname="fbRound2.png" src="http://www.417fashionation.com/imgs/fbRound.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://instagram.com/417mag/" name="Instagram" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f590-943e27de0c8b91cc3fcf1475c3e5d726" name="instaRound.png" spname="instaRound2.png" src="http://www.417fashionation.com/imgs/instaRound.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://www.pinterest.com/417magazine/" name="Pinterest" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f576-943e27de0c8b91cc3fcf1475c3e5d726" name="pinRound2.png" spname="pinRound2.png" src="http://www.417fashionation.com/imgs/pinRound.png" style="max-width: 30px;" xt="SPIMAGE" /></a> <a href="https://twitter.com/417mag" name="Twitter" target="_blank" xt="SPCLICK"><img contentid="52851b4e-1533e36f5ac-943e27de0c8b91cc3fcf1475c3e5d726" name="twitterRound2.png" spname="twitterRound2.png" src="http://www.417fashionation.com/imgs/twitterRound.png" style="max-width: 30px;" xt="SPIMAGE" /></a></font></span></td>
 					</tr>
 					<tr>
 						<td style=" width: 100%; text-align: center;   background-color: #000000;"><span style="font-size:14px;"><font color="#000000"><a href="http://www.417mag.com/417-Magazine/Newsletter-Signup/" name="newsletterSignup" style="color:#ffffff;" target="_blank" xt="SPCLICK">Click here to sign up for our other newsletters!</a></font></span></td>
@@ -293,14 +261,20 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 	</tbody>
 </table>
 </body>
-</html>';*/
+</html>';
+
 
 
 
 
 
 //this is what we are sending.
-//mail($eAddress, $subject, $message, $headers, '-f' . $from);
+//mail($myName, $subject, $message, $headers, '-f' . $from);
+if($noLikes > 0){
+    echo $myName."<br/>";
+    echo $message."<br/><br/>";
+}
 
+}
 
-
+            
