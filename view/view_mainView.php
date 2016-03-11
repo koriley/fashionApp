@@ -23,10 +23,10 @@ echo "<script> var userID='$id'; </script>";
 <div id="edit" class="adminEdit"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>edit</div>
 <!-- this is the ads above the form-->
 <div class="headImage top" >
-    <img  src="/img/Fashionation16_WebAppHeader2.png" />
+    <img  src="/img/Fashionation16_WebAppHeader5.png" />
 </div>
 <div class="welcomText" style="text-align: center; max-width:400px; margin:auto;">
-    <span style='font-weight:bold'>WELCOME TO THE #417FASHIONATION STYLE GUIDE!</span><br/>
+    
     Follow along with the runway show and click to star the fashions you love below. We'll email you everything you liked at the end of the night!
 </div>
 <div class="headImage" >
