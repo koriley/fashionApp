@@ -126,33 +126,33 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 
             //echo "<br/>";
             if ($user[$aa]["model_$v"] != '') {
-if($store == 0){
-    $message .= "<strong><a href='" . $stores[$k]['storeLink'] . "'><img src='http://www.417fashionation.com/" . $stores[$k]['storeImage'] . "' /></a><a href='" . $stores[$k]['salonLink'] . "'><img src='http://417fashionation.com" . $stores[$k]['salonImage'] . "' /></a></strong><br/>";
-        $store = 1;
-}
+                if ($store == 0) {
+                    $message .= "<strong><a href='" . $stores[$k]['storeLink'] . "'><img src='http://www.417fashionation.com/" . $stores[$k]['storeImage'] . "' /></a><a href='" . $stores[$k]['salonLink'] . "'><img src='http://417fashionation.com" . $stores[$k]['salonImage'] . "' /></a></strong><br/>";
+                    $store = 1;
+                }
                 $whatILike = explode('|', $user[$aa]["model_$v"]);
                 $whatThisModelisWearing = explode('|', $model[$e]['items']);
                 $itemPrice = explode('|', $model[$e]['price']);
                 $priceCount = count($itemPrice);
-                for($ke=0;$ke<=$priceCount-1;$ke++){
+                for ($ke = 0; $ke <= $priceCount - 1; $ke++) {
                     $itemPrice[$ke] = str_replace('$', '', $itemPrice[$ke]);
                 }
                 $wearingCount = count($whatILike);
                 if ($whatILike != '') {
-                    
+
                     for ($x = 0; $x <= $wearingCount; $x++) {
                         if ($whatThisModelisWearing[$whatILike[$x]] != '') {
                             //echo $whatThisModelisWearing[$whatILike[$x]]."<br/>";
                             $noLikes = 1;
-                            if($itemPrice[$whatILike[$x]] == ''){
-                            $message .= $whatThisModelisWearing[$whatILike[$x]] . "<br/>";
-                            }else{
-                            $message .= $whatThisModelisWearing[$whatILike[$x]] . ", $".$itemPrice[$whatILike[$x]]."<br/>";    
+                            if ($itemPrice[$whatILike[$x]] == '') {
+                                $message .= $whatThisModelisWearing[$whatILike[$x]] . "<br/>";
+                            } else {
+                                $message .= $whatThisModelisWearing[$whatILike[$x]] . ", $" . $itemPrice[$whatILike[$x]] . "<br/>";
                             }
                         }
                     }
                 }
-               
+
                 //echo $whatThisModelisWearing[$whatILike];
                 //echo "------------------------------<br/>";
                 //echo " you have items for model $v ";
@@ -162,17 +162,16 @@ if($store == 0){
                 //  print_r($whatThisModelisWearing);
                 // echo "<br/>";
             }
-
         }
-        if($store == 1){
-        $message .= "<br/>";
+        if ($store == 1) {
+            $message .= "<br/>";
         }
         $store = 0;
     }
 
 
 
-$message .= '<font face="Times"></font></td>
+    $message .= '<font face="Times"></font></td>
 		</tr>
 		<tr>
 			<td>
@@ -272,11 +271,10 @@ $message .= '<font face="Times"></font></td>
 
 //this is what we are sending.
 //mail($myName, $subject, $message, $headers, '-f' . $from);
-if($noLikes > 0){
-    echo $myName."<br/>";
-    echo $message."<br/><br/>";
-}
-
+    if ($noLikes > 0) {
+        echo $myName . "<br/>";
+        echo $message . "<br/><br/>";
+    }
 }
 
             
