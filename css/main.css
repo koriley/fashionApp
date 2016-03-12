@@ -88,6 +88,8 @@ and open the template in the editor.
 
 .userView .storeLogo {
   text-align: center; }
+  .userView .storeLogo img {
+    max-width: 145px; }
 .userView .modelEdit {
   max-width: 400px;
   margin: auto;

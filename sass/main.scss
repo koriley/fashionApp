@@ -128,6 +128,9 @@ $black:#000;
 
 .userView{
     .storeLogo{
+        img{
+            max-width:145px; 
+        }
         text-align: center;
     }
     .modelEdit{
