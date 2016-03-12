@@ -164,7 +164,9 @@ if($store == 0){
             }
 
         }
+        if($store == 1){
         $message .= "<br/>";
+        }
         $store = 0;
     }
 
