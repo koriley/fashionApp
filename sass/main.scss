@@ -56,61 +56,67 @@ $black:#000;
         outline: none;
     }
 
-    input:active{
-        border: 1px solid #ff656c;
-    }
 
-    input#username{
-        background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
-        background-size: 16px 80px;
-    }
-    input#username:focus{
-        background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
-        background-size: 16px 80px;
-        border: 1px solid #ff656c;
-    }
-    input#password {
-        background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
-        background-size: 16px 80px;
-    }
-    input#password:focus {
-        background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
-        background-size: 16px 80px;
-        border: 1px solid #ff656c;
-    }
+
+} 
 
 
 
-    .buttonContainer{
-        width:100%;
-    }
-    .buttonDiv{
-        width:45%;
-        display:inline-block;
-        height:40px;
-        margin:6px;
-        vertical-align:top;
-
-        button {
-            width: 100%;
-            height: 40px;
-            background: $loginRed;
-            box-sizing: border-box;
-            border-radius: 5px;
-            border: 1px solid #e15960;
-            color: $white;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-family: $mainFont;
-            outline: none;
-            cursor: pointer;
-        }
-    } 
-
-
-
+input:active{
+    border: 1px solid #ff656c;
 }
+
+input#username{
+    background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+input#username:focus{
+    background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+    border: 1px solid #ff656c;
+}
+input#password {
+    background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+input#password:focus {
+    background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+    border: 1px solid #ff656c;
+}
+
+
+
+.buttonContainer{
+    width:100%;
+}
+.buttonDiv{
+    width:45%;
+    display:inline-block;
+    height:40px;
+    margin:6px;
+    vertical-align:top;
+
+    button {
+        width: 100%;
+        height: 40px;
+        background: $loginRed;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #e15960;
+        color: $white;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-family: $mainFont;
+        outline: none;
+        cursor: pointer;
+    }
+} 
+
+
+
+
 
 .headImage{
     max-width:$siteWidth;
