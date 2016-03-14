@@ -35,7 +35,11 @@ $myID = $id[1];
 if($add === 'yes'){
     echo "<script>
         jQuery('#loginBlock').fadeOut();
-        jQuery('#mother').load('view/view_mainView.php?id=$myID').fadeIn();
+         //set a cookie to look if the user has already logged in.
+        setCookie('fashionUser', $id[1], 365);
+        setCookie('fashionPass', '$pword', 365);
+        setCookie('fashionLev', $id[0], 365);    
+        jQuery('#mother').load('view/view_mainView.php?level=$exist[0]&userID=$exist[1]').fadeIn();
         
         </script>";
     
