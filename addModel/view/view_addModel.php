@@ -114,7 +114,8 @@ echo "<script> var level=$level;"
 
 //creating the send email button and sending the user to the send email functionality
 jQuery('#sendEmail').click(function(){
-    jQuery('#mother').load('/sendEmail/view/view_testEmail.php');
+    //jQuery('#mother').load('/sendEmail/view/view_testEmail.php');
+    jQuery.post('sendEmail/control/control_sendEmail.php');
 });
 jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
 

@@ -272,9 +272,9 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 //this is what we are sending.
 
     if ($noLikes > 0) {
-        //mail($myName, $subject, $message, $headers, '-f' . $from);
-        echo $myName . "<br/>";
-        echo $message . "<br/><br/>";
+        mail($myName, $subject, $message, $headers, '-f' . $from);
+        //echo $myName . "<br/>";
+        //echo $message . "<br/><br/>";
     }
 }
 
