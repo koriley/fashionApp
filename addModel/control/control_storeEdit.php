@@ -32,9 +32,9 @@ for ($i = 0; $i <= $storeCount; $i++) {
 
 
         if ($i == 0) {
-            echo "<div class='" . $res[$i]['storeName'] . " store store_".$res[$i]['id']."'>";
+            echo "<div class='" . str_replace(" ","_",$res[$i]['storeName']) . " store store_".$res[$i]['id']."'>";
         } else {
-            echo "<div class='" . $res[$i]['storeName'] . " store store_".$res[$i]['id']."' style='display:none;'>";
+            echo "<div class='" . str_replace(" ","_",$res[$i]['storeName']) . " store store_".$res[$i]['id']."' style='display:none;'>";
         }
 
         echo "<h1>" . $res[$i]['storeName'] . " Information</h1>";
@@ -75,6 +75,8 @@ for ($i = 0; $i <= $storeCount; $i++) {
     //this will change the div depending on what store you have selected.
     jQuery("#storeSelectEdit").on('change', function () {
         var newStore = jQuery(this).val();
+        newStore = newStore.replace(/\s/g, "_");
+        //alert(newStore);
         jQuery('.store').each(function () {
             jQuery(this).hide();
         });
