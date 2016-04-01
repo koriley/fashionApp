@@ -54,8 +54,8 @@ for ($i = 0; $i <= $storeCount; $i++) {
 
         echo '<div class = "modal-footer">
 <button type = "button" class = "btn btn-primary exitStore" id = "exitStore">Exit Edit Store</button>
-<button type = "button" id = "deleteStore" data-delete="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '" class = "btn btn-danger deleteStore">Delete Store</button>
-<button type = "button" id = "editStore" class = "btn btn-primary editStore" data-id="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '">Edit Store</button>
+<button type = "button" id = "deleteStore" data-delete="' . $res[$i]['id'] . '" data-storeName="' . $res[$i]['storeName'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '" class = "btn btn-danger deleteStore">Delete Store</button>
+<button type = "button" id = "editStore" class = "btn btn-primary editStore" data-id="' . $res[$i]['id'] . '" data-storeImage="' . $res[$i]['storeImage'] . '" data-salonImage="' . $res[$i]['salonImage'] . '">Save Store Updates</button>
 </div>';
         echo "</div>";
     }
@@ -85,6 +85,7 @@ for ($i = 0; $i <= $storeCount; $i++) {
 
     //exit the edit we will just reload the view_addModel.php
     jQuery('.exitStore').click(function () {
+       
         jQuery('#mother').load('addModel/view/view_addModel.php?level=' + level + '&userID=' + userID);
     });
 
@@ -93,7 +94,9 @@ for ($i = 0; $i <= $storeCount; $i++) {
         var storeDelete = jQuery(this).attr('data-delete');
         var image1 = jQuery(this).attr('data-storeImage');
         var image2 = jQuery(this).attr('data-salonImage');
-        jQuery.post('addModel/control/control_storeDelete.php', {deleteStore: storeDelete, delImage1: image1, delImage2: image2});
+        var name = jQuery(this).attr('data-storeName');
+        //alert(name);
+        jQuery.post('addModel/control/control_storeDelete.php', {deleteStore: storeDelete, delImage1: image1, delImage2: image2, storeName:name});
         jQuery('#mother').load('addModel/view/view_addModel.php?level=' + level + '&userID=' + userID);
     });
 

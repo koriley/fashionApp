@@ -15,5 +15,6 @@ $addModel = new model();
 $storeDelete = $_POST['deleteStore'];
 $image1 = $_POST['delImage1'];
 $image2 = $_POST['delImage2'];
+$name = $_POST['storeName'];
 
-$res = $addModel->deleteStore($dbCon, $storeDelete, $image1, $image2);
+$res = $addModel->deleteStore($dbCon, $storeDelete, $image1, $image2, $name);
