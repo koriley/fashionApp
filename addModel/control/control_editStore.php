@@ -23,7 +23,7 @@ $order = $_POST['storeOrder'];
 $oldStoreImage[0] = $_POST['oldStore'];
 $oldStoreImage[1] = $_POST['oldSalon'];
 $id = $_POST['id'];
-
+$desc = $_POST['desc'];
 //echo "$storeName, $storeLink, $salonName, $salonLink, ".$file[0]['name'].",". $file[1]['name'].", $order, $oldStoreImage, $oldSalonImage";
 
 
@@ -35,7 +35,7 @@ if($file[1]!=''){
     uploadImage(1);
 }
 //print_r($oldStoreImage);
-$res = $addModel->updatedStore($dbCon, $storeName, $storeLink, $oldStoreImage[0], $salonName, $salonLink, $oldStoreImage[1], $order, $id);
+$res = $addModel->updatedStore($dbCon, $storeName, $storeLink, $oldStoreImage[0], $salonName, $salonLink, $oldStoreImage[1], $order, $id, $desc);
 
 //make the upload file a function and add the ability to delete the old image.
 function uploadImage($i){

@@ -55,6 +55,10 @@ for ($z = 0; $z <= $storeCount - 1; $z++) {
         $modNum++;
         $modNumZero++;
     }
+    
+    if($stores[$z]['storeDesc'] !== ''){
+        echo '<div class="storeDescription">'.$stores[$z]['storeDesc'].'</div>';
+    }
     echo '<div class="headImage" style="max-width:400px; margin:auto; padding-top:15px;">
     <img style="width:100% " src="/img/Fashionation16_WebApp_BlackBar.png" />
 </div>';

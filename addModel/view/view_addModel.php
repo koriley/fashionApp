@@ -84,8 +84,9 @@ echo "<script> var level=$level;"
                 <input type="text" value="" placeholder="Salon Link" id="salonLink" />
                 <input type="file" value="" placeholder="Salon Image" id="salonImage" />
                 <h1>Order in runway show</h1>
-                <input type="test" value="" placeholder="Order" id="storeOrder" />
-
+                <input type="text" value="" placeholder="Order" id="storeOrder" />
+<h1>Store Description</h1>
+<textarea cols="75" rows="10" type="text" value="" placeholder="Description" id="storeDesc" ></textarea>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="editStore">Edit Store</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,6 +181,7 @@ jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
         var salonName = jQuery('#salonName').val();
         var salonLink = jQuery('#salonLink').val();
         var order = jQuery('#storeOrder').val();
+        var desc = jQuery('#storeDesc').val();
         //file2 = jQuery('#salonImage')[0].files[0];
         // jQuery.post('addModel/control/control_addStore.php',{storeName:storeName, storeLink:storeLink, storeImage:file});
         //alert(file);
@@ -192,6 +194,7 @@ jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
         formData.append('salonName', salonName);
         formData.append('salonLink', salonLink);
         formData.append('storeOrder', order);
+        formData.append('storeDesc', desc);
 
         jQuery.ajax({
             url: 'addModel/control/control_addStore.php',

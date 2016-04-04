@@ -17,7 +17,7 @@ $salonLink = $_POST['salonLink'];
 $file[0] =  $_FILES['file1']; //these two lines set the file to an array so we can capture both of them.
 $file[1] =  $_FILES['file2'];
 $order = $_POST['storeOrder'];
-
+$desc = $_POST['storeDesc'];
 
 
 //this for only runs twice, it is uploading our two images and setting a array for the location
@@ -53,7 +53,7 @@ for ($i = 0; $i <= 1; $i++) {
 
 //echo "$storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1], $order";
 
-$add = $addModel->addStore($dbCon, $storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1], $order);
+$add = $addModel->addStore($dbCon, $storeName, $storeLink, $imagPath[0], $salonName, $salonLink, $imagPath[1], $order, $desc);
 //echo count($sepItems);
 //print_r($itemPricetogeter);
 if($add == 'yes'){

@@ -144,6 +144,14 @@ input#password:focus {
         margin:auto;
         text-align:left;
     }
+    .storeDescription{
+        width:$siteWidth;
+        text-align: left;
+        font-style: italic;
+        font-size: 15px;
+        //border:1px solid red;
+        margin:auto;
+    }
 }
 
 

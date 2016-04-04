@@ -21,17 +21,17 @@ class model {
         return $add = 'yes';
     }
 
-    function addStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order) {
-        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, runwayOrder) VALUES (NULL,'$storeName', '$storeImage', '$storeLink', '$salonName', '$salonImage', '$salonLink', '$order')";
+    function addStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order, $desc) {
+        $sql = "INSERT INTO store(id, storeName, storeImage, storeLink, salonName, salonImage, salonLink, runwayOrder, storeDesc) VALUES (NULL,'$storeName', '$storeImage', '$storeLink', '$salonName', '$salonImage', '$salonLink', '$order', '$desc')";
         $res = $dbCon->select($sql);
         //echo $sql;
         return $add = 'yes';
     }
 
-    function updatedStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order, $id) {
-        $sql = "UPDATE store SET id='" . $id . "', storeName='" . $storeName . "',storeImage='" . $storeImage . "',storeLink='" . $storeLink . "',salonName='" . $salonName . "',salonImage='" . $salonImage . "',salonLink='" . $salonLink . "',runwayOrder='" . $order . "' WHERE id=$id";
+    function updatedStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order, $id, $desc) {
+        $sql = "UPDATE store SET id='" . $id . "', storeName='" . $storeName . "',storeImage='" . $storeImage . "',storeLink='" . $storeLink . "',salonName='" . $salonName . "',salonImage='" . $salonImage . "',salonLink='" . $salonLink . "',runwayOrder='" . $order . "',storeDesc='" . $desc . "' WHERE id=$id";
         $res = $dbCon->select($sql);
-       // echo $sql;
+        echo $sql;
         return $add = 'yes';
     }
 

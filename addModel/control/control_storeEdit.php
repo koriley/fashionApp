@@ -50,7 +50,8 @@ for ($i = 0; $i <= $storeCount; $i++) {
     <input type = "file" value = "Change Salon Image" placeholder = "Salon Image" id = "salonImage_'.$res[$i]['id'].'" />
 <h1>Order in runway show</h1>
 <input type = "test" value = "' . $res[$i]['runwayOrder'] . '" placeholder = "Order" id = "storeOrder_'.$res[$i]['id'].'" />';
-
+echo '<h1>Store Description</h1>
+<textarea cols="75" rows="10" type="text" value="" placeholder="Description" id="storeDesc_'.$res[$i]['id'].'" >'.$res[$i]['storeDesc'].'</textarea>';
 
         echo '<div class = "modal-footer">
 <button type = "button" class = "btn btn-primary exitStore" id = "exitStore">Exit Edit Store</button>
@@ -111,7 +112,8 @@ for ($i = 0; $i <= $storeCount; $i++) {
         var salonLink = jQuery('#salonLink_'+storeID).val();
         var oldSalonImage = jQuery(this).attr('data-salonImage');
         var order = jQuery('#storeOrder_'+storeID).val();
-
+        var desc = jQuery('#storeDesc_'+storeID).val();
+        
         var formData = new FormData();
         if (document.getElementById('storeImage_'+storeID).files.length !== 0) {
             formData.append('file1', jQuery('#storeImage_'+storeID)[0].files[0]);
@@ -133,6 +135,7 @@ for ($i = 0; $i <= $storeCount; $i++) {
         formData.append('oldStore', oldStoreImage);
         formData.append('oldSalon', oldSalonImage);
         formData.append('id', storeID);
+        formData.append('desc', desc);
 
         jQuery.ajax({
             url: 'addModel/control/control_editStore.php', //yes this is confusing, we are on storeEdit, but editStore does the editing.
@@ -142,7 +145,7 @@ for ($i = 0; $i <= $storeCount; $i++) {
             processData: false, // tell jQuery not to process the data
             contentType: false, // tell jQuery not to set contentType
             success: function (data) {
-               // console.log(data);
+               console.log(data);
                 // alert(data);
             }
         });
