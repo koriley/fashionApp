@@ -48,6 +48,7 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
                     width: 100% !important;
                     display: block;
                 }
+               
 
             }
 
@@ -163,6 +164,10 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
                 // echo "<br/>";
             }
         }
+        
+        
+            $message .= '<div style="margin-top:5px; width:400px; margin:auto; text-align:left; font-style:italic; font-size:15px;">'.$stores[$k]['storeDesc'].'</div>';
+        
         if ($store == 1) {
             $message .= "<br/>";
         }
@@ -273,7 +278,7 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 
     if ($noLikes > 0) {
         mail($myName, $subject, $message, $headers, '-f' . $from);
-        //echo $myName . "<br/>";
+      //  echo $myName . "<br/>";
         //echo $message . "<br/><br/>";
     }
 }

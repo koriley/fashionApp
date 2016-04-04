@@ -101,6 +101,12 @@ input#password:focus {
   max-width: 400px;
   margin: auto;
   text-align: left; }
+.userView .storeDescription {
+  width: 400px;
+  text-align: left;
+  font-style: italic;
+  font-size: 15px;
+  margin: auto; }
 
 .mother {
   text-align: center; }
