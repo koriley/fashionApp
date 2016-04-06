@@ -29,7 +29,15 @@ class model {
     }
 
     function updatedStore($dbCon, $storeName, $storeLink, $storeImage, $salonName, $salonLink, $salonImage, $order, $id, $desc) {
-        $sql = "UPDATE store SET id='" . $id . "', storeName='" . $storeName . "',storeImage='" . $storeImage . "',storeLink='" . $storeLink . "',salonName='" . $salonName . "',salonImage='" . $salonImage . "',salonLink='" . $salonLink . "',runwayOrder='" . $order . "',storeDesc='" . $desc . "' WHERE id=$id";
+        //first we need to get the old store name to update the models.
+        $sql = 'SELECT storeName FROM store WHERE id="'.$id.'"';
+        $storeRes = $dbCon->select($sql);
+        if($storeName != $storeRes[0]['storeName']){
+            //if the store names are different, we will update the models
+            $sql='UPDATE model SET store="'.$storeName.'" WHERE store ="'.$storeRes[0]['storeName'].'"';
+            $res = $dbCon->select($sql);
+        }
+        $sql = 'UPDATE store SET id="' . $id . '", storeName="' . $storeName . '",storeImage="' . $storeImage . '",storeLink="' . $storeLink . '"salonName="' . $salonName . '",salonImage="' . $salonImage . '",salonLink="' . $salonLink . '",runwayOrder="' . $order . '",storeDesc="' . $desc . '" WHERE id=$id';
         $res = $dbCon->select($sql);
         echo $sql;
         return $add = 'yes';
