@@ -8,13 +8,16 @@ if($uname !=''){
 ?>
 
 <div class="login-block" id="loginBlock">
+    <div class="headImage top" >
+    <img  src="/img/Fashionation16_WebAppHeader5.png" />
+</div>
                     <h1>Login</h1>
                     <input type="text" value="" placeholder="E-Mail Address" id="username" />
                     <input type="password" value="" placeholder="Password" id="password" />
                     <div  class=buttonContainer" style='width:100%;'><div class='buttonDiv'>
                     <button id='create' style='display:inline;'>Create Account</button></div>
                      <div class='buttonDiv'>
-                    <button id="submit" style='display:inline;'>Submit</button></div>
+                    <button id="submit" style='display:inline;'>Login</button></div>
                     </div>
                 </div>
                 
