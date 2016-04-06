@@ -15,7 +15,7 @@ and open the template in the editor.
 $backgroundColor : #fff;
 $fontColor: #000;
 $mainFont: 'Oswald', sans-serif;
-$loginRed: #ff656c;
+$loginRed: /*#ff656c */#000;
 $loginRadius:5px;
 $siteWidth:380px;
 $loginBorderColor: #ccc;
@@ -23,6 +23,7 @@ $white:#fff;
 $black:#000;
 $itemFontSize:14pt;
 $siteSmallWidth:375px;
+$fashionGold: #D6AA61;
 
 
 
@@ -30,10 +31,10 @@ $siteSmallWidth:375px;
 
 .login-block{
     width: $siteWidth;
-    padding: 20px;
+   // padding: 20px;
     background: $backgroundColor;
-    border-radius: $loginRadius;
-    border-top: 5px solid $loginRed;
+   // border-radius: $loginRadius;
+    //border-top: 5px solid $loginRed;
     margin: 0 auto;
 
     h1{
@@ -41,7 +42,7 @@ $siteSmallWidth:375px;
         color: $fontColor;
         font-size: 18px;
         text-transform: uppercase;
-        margin-top: 0;
+        
         margin-bottom: 20px;
     }
 
@@ -65,7 +66,7 @@ $siteSmallWidth:375px;
 
 
 input:active{
-    border: 1px solid #ff656c;
+    border: 1px solid $fashionGold;
 }
 
 input#username{
@@ -75,7 +76,7 @@ input#username{
 input#username:focus{
     background: $backgroundColor url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
     background-size: 16px 80px;
-    border: 1px solid #ff656c;
+    border: 1px solid $fashionGold;
 }
 input#password {
     background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
@@ -84,7 +85,7 @@ input#password {
 input#password:focus {
     background: $backgroundColor url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
     background-size: 16px 80px;
-    border: 1px solid #ff656c;
+    border: 1px solid $fashionGold;
 }
 
 
@@ -105,7 +106,7 @@ input#password:focus {
         background: $loginRed;
         box-sizing: border-box;
         border-radius: 5px;
-        border: 1px solid #e15960;
+        border: 1px solid $loginRed;
         color: $white;
         font-weight: bold;
         text-transform: uppercase;
@@ -135,14 +136,23 @@ input#password:focus {
 }
 
 .menu{
-    max-width:$siteSmallWidth;
+    position: fixed;
+    bottom:0;
+    right:0;
+    //width:$siteSmallWidth;
     background-color:$black; 
     height:50px; 
-    text-align:left;
+    text-align:right;
     margin:auto;
     img{
         width:45px;
     }
+}
+
+.menuItemLI{
+    font-family: $mainFont;
+    background-color:$black;
+    font-size: $itemFontSize;
 }
 
 .userView{
