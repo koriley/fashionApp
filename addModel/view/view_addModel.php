@@ -146,8 +146,15 @@ jQuery('#storeNames').load('addModel/control/control_getStoreNames.php');
         jQuery('.multi-field_add .itemsPrice').each(function () {
             if (price === '') {
                 price = jQuery(this).val();
+                if(price === ''){
+                    price = 'null';
+                }
             } else {
-                price = price + '|' + jQuery(this).val();
+                var newPrice = jQuery(this).val();
+                if(newPrice === ''){
+                    newPrice = 'null';
+                }
+                price = price + '|' + newPrice;
             }
 
         });

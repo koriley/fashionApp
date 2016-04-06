@@ -24,6 +24,7 @@ for ($i = 0; $i <= $resCount - 1; $i++) {
     for ($x = 0; $x <= $mrchCount; $x++) {
         $item[$x] = $mrch[$i][$x];
         $price[$x] = $mrchPrice[$i][$x];
+        $price[$x] = str_replace("null","",$price[$x]);
         $price[$x] = str_replace('$','',$price[$x]);
         echo "<div class='itemContainer'>";
         echo "<div class='itemsEdit' style=''>$item[$x]</div>";
@@ -127,8 +128,15 @@ jQuery("#myModal_' . $id[$i] . '").on("hidden.bs.modal", function (e) {
                 jQuery(".multi-field_'.$id[$i].' .itemsPrice").each(function() {
                     if (price === "") {
                         price = jQuery(this).val();
+                        if(price === ""){
+                    price = "null";
+                }
                     } else {
-                        price = price + "|" + jQuery(this).val();
+                       var newPrice = jQuery(this).val();
+                if(newPrice === ""){
+                    newPrice = "null";
+                }
+                price = price + "|" + newPrice;
                     }
 
                 });

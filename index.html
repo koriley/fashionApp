@@ -8,7 +8,7 @@
 
         <title>Fashionation</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
+        <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" sizes="57x57" href="/imgs/apple-icon-57x57.png">
@@ -25,11 +25,13 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/imgs/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/imgs/favicon-16x16.png">
         <link rel="manifest" href="/imgs/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/imgs//ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="msapplication-TileImage" content="/imgs/ms-icon-144x144.png">
+        <meta name="theme-color" content="#000000">
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link type="text/css" href="css/jquery.mmenu.all.css" rel="stylesheet" />
         <style>
             body {
 
@@ -50,13 +52,31 @@
 
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     </head>
+
     <body>
+
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
         <div class="container-fluid">
+
+            <div class="menuItems" style="display:none">
+                <nav id="menu">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About us</a>
+                            <ul>
+                                <li><a href="/about/history">History</a></li>
+                                <li><a href="/about/team">The team</a></li>
+                                <li><a href="/about/address">Our address</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class='row'>
                 <div class='col-md-12 mother' id='mother'  >
 
@@ -64,14 +84,38 @@
             </div>
 
         </div>
-        <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- /container --> 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/jquery.mmenu.all.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src='js/silverCookie.js'></script>
         <script src="js/main.js"></script>
 
+
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+
+
+            jQuery('.menuItems').load('control/control_fillMenu.php', function () {
+                jQuery("#menu").mmenu({
+                    "slidingSubmenus": false,
+                    "extensions": [
+                        "effect-menu-zoom",
+                        "pagedim-black",
+                        "theme-dark"
+                    ]
+                });
+                var mmenu = $("#menu").data("mmenu");
+                jQuery('.menuItemLI').click(function () {
+                    mmenu.close();
+                });
+            });
+        </script>
+
+
         <script>
             //
             jQuery.ajaxSetup({cache: false}); //this is used to stop browsers from caching load functions.

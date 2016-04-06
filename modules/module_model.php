@@ -15,7 +15,7 @@ class model {
     }
 
     function getModel($dbCon, $store) {
-        $sql = "SELECT * FROM model WHERE store='$store' ORDER BY modelNum ASC";
+        $sql = 'SELECT * FROM model WHERE store="'.$store.'" ORDER BY modelNum ASC';
         $res = $dbCon->select($sql);
         // echo $sql;
         // var_dump($res);

@@ -11,20 +11,25 @@ $id = strip_tags($_GET['id']);
 //echo $id;
 //echo "<script>var id='$id';</script>";
 $stores = $addModel->getStores($dbCon);
-$storeCount = count($stores);
+$storeCount = count($stores)-1;
 $modNum = '1';
 $modNumZero = '0';
-for ($z = 0; $z <= $storeCount - 1; $z++) {
+for ($z = 0; $z <= $storeCount; $z++) {
     $storeName[$z] = $stores[$z]['storeName'];
+    
+    $anchor[$z] = str_replace("&", "and", $storeName[$z]);
+    $anchor[$z] = str_replace("1", "", $anchor[$z]);
+    $anchor[$z] = str_replace(" ", "_", $anchor[$z]);
+    echo '<div id="'.$anchor[$z].'"></div>';
 
     echo '<div class="storeLogo"><img src="' . $stores[$z]['storeImage'] . '" /><img src="' . $stores[$z]['salonImage'] . '" /></div>';
     $res = $addModel->getModel($dbCon, $storeName[$z]);
-    $resCount = count($res);
+    $resCount = count($res)-1;
 
     $getUserLikes = $addModel->getUserLikes($dbCon, $id);
 
 //print_r($getUserLikes);
-    for ($i = 0; $i <= $resCount - 1; $i++) {
+    for ($i = 0; $i <= $resCount; $i++) {
         $modelNum = $i + 1;
         $store[$i] = $res[$i]['store'];
         $mrch[$i] = explode('|', $res[$i]['items']);
@@ -35,17 +40,18 @@ for ($z = 0; $z <= $storeCount - 1; $z++) {
         for ($x = 0; $x <= $mrchCount; $x++) {
             $item[$x] = $mrch[$i][$x];
             $price[$x] = $mrchPrice[$i][$x];
+            $price[$x] = str_replace('null', '', $price[$x]);
             $price[$x] = str_replace('$', '', $price[$x]);
             $currentModelCount = count($currentModelLikes[$i]);
             for ($y = 0; $y <= $currentModelCount; $y++) {
-                echo "<div class='itemsEdit' data-liked='false' data-item='$x' id='item_$x' style=''><input id='itemSelect' type='checkbox'>$item[$x]";
+                echo "<div class='itemsEdit' data-liked='false' data-item='$x' id='item_$x' style='display:table-row'><div style='display:table-cell'><input id='itemSelect' type='checkbox'></div><div style='display:table-cell'>$item[$x]";
 
                 if ($price[$x] != '') {
-                    echo ",$$price[$x]";
+                    echo ", $$price[$x]";
                 } else {
                     echo "$price[$x]";
                 }
-                echo "</div>";
+                echo "</div></div>";
             }
         }
 
@@ -59,7 +65,7 @@ for ($z = 0; $z <= $storeCount - 1; $z++) {
     if($stores[$z]['storeDesc'] !== ''){
         echo '<div class="storeDescription">'.$stores[$z]['storeDesc'].'</div>';
     }
-    echo '<div class="headImage" style="max-width:400px; margin:auto; padding-top:15px;">
+    echo '<div class="blackImage" style="">
     <img style="width:100% " src="/img/Fashionation16_WebApp_BlackBar.png" />
 </div>';
 }
@@ -92,15 +98,15 @@ if ($getUserLikes != '') {
     jQuery(document).ready(function () {
         jQuery('input[id="itemSelect"]').each(function () {
             jQuery(this).hide();
-            var amILiked = jQuery(this).parent().attr('data-liked');
+            var amILiked = jQuery(this).parent().parent().attr('data-liked');
             if (amILiked === 'true') {
                 jQuery(this).after('<img id="like" src="/img/Fashionation16_WebApp_GoldStar.png" style="padding-right:5px;" />');
                 jQuery(this).after('<img id="unlike" src="/img/Fashionation16_WebApp_BlackStar2.png" style=" display:none; padding-right:5px;" />');
-                jQuery(this).parent().css({'color': '#DEB065'});
+                jQuery(this).parent().parent().css({'color': '#DEB065'});
             } else {
                 jQuery(this).after('<img id="unlike" src="/img/Fashionation16_WebApp_BlackStar2.png" style="padding-right:5px;" />');
                 jQuery(this).after('<img id="like" src="/img/Fashionation16_WebApp_GoldStar.png" style="display:none; padding-right:5px;" />');
-                jQuery(this).parent().css({'color': '#000'});
+                jQuery(this).parent().parent().css({'color': '#000'});
             }
         });
     });
@@ -111,8 +117,8 @@ if ($getUserLikes != '') {
         var myLikes = '';
         var parent = '';
         if (liked === 'true') {
-            jQuery(this).children('#like').hide();
-            jQuery(this).children('#unlike').show();
+            jQuery(this).children('div').children('#like').hide();
+            jQuery(this).children('div').children('#unlike').show();
             jQuery(this).css({'color': '#000'});
             jQuery(this).children('input').prop('checked', false);
             jQuery(this).attr('data-liked', 'false');
@@ -134,8 +140,8 @@ if ($getUserLikes != '') {
             });
         }
         if (liked === 'false') {
-            jQuery(this).children('#like').show();
-            jQuery(this).children('#unlike').hide();
+            jQuery(this).children('div').children('#like').show();
+            jQuery(this).children('div').children('#unlike').hide();
             jQuery(this).css({'color': '#DEB065'});
             jQuery(this).children('input').prop('checked', true);
             jQuery(this).attr('data-liked', 'true');

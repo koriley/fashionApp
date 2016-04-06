@@ -17,10 +17,12 @@ $fontColor: #000;
 $mainFont: 'Oswald', sans-serif;
 $loginRed: #ff656c;
 $loginRadius:5px;
-$siteWidth:400px;
+$siteWidth:380px;
 $loginBorderColor: #ccc;
 $white:#fff;
 $black:#000;
+$itemFontSize:14pt;
+$siteSmallWidth:375px;
 
 
 
@@ -119,9 +121,9 @@ input#password:focus {
 
 
 .headImage{
-    max-width:$siteWidth;
+    max-width:$siteSmallWidth;
     margin:auto;
-    padding-top:15px;
+   // margin-top:-8px;
     img{
         width:100%;
     }
@@ -130,6 +132,17 @@ input#password:focus {
 .top{
     margin-top:0px;
     padding-top:0px;
+}
+
+.menu{
+    max-width:$siteSmallWidth;
+    background-color:$black; 
+    height:50px; 
+    text-align:left;
+    margin:auto;
+    img{
+        width:45px;
+    }
 }
 
 .userView{
@@ -144,15 +157,17 @@ input#password:focus {
         margin:auto;
         text-align:left;
     }
-    .storeDescription{
-        width:$siteWidth;
+    
+}
+
+.storeDescription{
+        width:99%;
         text-align: left;
         font-style: italic;
-        font-size: 15px;
+        font-size: 12px;
         //border:1px solid red;
         margin:auto;
     }
-}
 
 
 
@@ -164,7 +179,7 @@ input#password:focus {
 
 .welcomText{
     font-family: $mainFont;
-    font-size: 14pt;
+    font-size: $itemFontSize;
 }
 
 
@@ -206,8 +221,16 @@ h1{
     box-shadow: 1px 1px 9px 2px rgb(238, 236, 236) inset;
 }
 
-
-
+.blackImage{
+    max-width:$siteWidth; 
+    margin:auto; 
+    padding-top:15px;
+}
+.welcomText{
+    text-align: center; 
+    max-width:$siteWidth;
+    margin:auto;
+}
 
 
 /************ This is the admin css ******************/
@@ -230,7 +253,7 @@ h1{
 .itemsEdit{
     text-align: left;
     font-family: $mainFont;
-    font-size: 14pt;
+    font-size: $itemFontSize;
 
 }
 .priceEdit{
