@@ -92,7 +92,9 @@ if ($getUserLikes != '') {
 }
 ?>
 
-
+<div class="welcomText bottomPad">
+    Thanks for attending #417Fashionation! We’ve saved your likes, and you’ll get an email from us tonight. Now it’s time for the after party!
+</div>
 
 <script>
     jQuery(document).ready(function () {
@@ -110,7 +112,7 @@ if ($getUserLikes != '') {
             }
         });
     });
-    jQuery('.itemsEdit').click(function () {
+    jQuery('.itemsEdit').on('click touch',function () {
         var isChecked = jQuery(this).children('input').prop('checked');
         var liked = jQuery(this).attr('data-liked');
         //alert(liked);
