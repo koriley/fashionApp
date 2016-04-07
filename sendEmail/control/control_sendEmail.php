@@ -109,7 +109,7 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 //get each model associated with that store
     for ($k = 0; $k <= $storeCount - 1; $k++) {
         // echo $stores[$k]['storeName']."<br/>";
-        $sql = "SELECT * FROM model WHERE store = '" . $stores[$k]['storeName'] . "' ORDER BY modelNum ASC";
+        $sql = 'SELECT * FROM model WHERE store = "' . $stores[$k]['storeName'] . '" ORDER BY modelNum ASC';
 
 
         $model = $dbCon->select($sql);
@@ -165,11 +165,12 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
                 // echo "<br/>";
             }
         }
-        
-        
-            $message .= '<div style="margin-top:5px; width:400px; margin:auto; text-align:left; font-style:italic; font-size:15px;">'.$stores[$k]['storeDesc'].'</div>';
-        
+
+
+
         if ($store == 1) {
+            $message .= '<div style="margin-top:5px; width:400px; margin:auto; text-align:left; font-style:italic; font-size:15px;">' . $stores[$k]['storeDesc'] . '</div>';
+
             $message .= "<br/>";
         }
         $store = 0;
@@ -186,7 +187,7 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Emerald-Salon-and-Spa-589943254389783/?fref=ts" target="_blank">EMERALD SALON &amp; SPA</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Fashion-House-188098224535758/?fref=ts" target="_blank">FASHION HOUSE</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/GroveSpa/?fref=ts" target="_blank">GROVE SPA</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/ShopHaremCo/?fref=ts" target="_blank">HAREM &amp; COMPANY</a>&nbsp;<br />
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/HoneyHive-Salon-Original-In-Haircare-312765758884009/?fref=ts" target="_blank">HONEY + HIVE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Inviktus-Paul-Mitchell-Focus-Salon-143695495644153/?fref=ts" target="_blank">INVIKTUS&nbsp;SALON</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Kaleidoscope-85481318771/?fref=ts" target="_blank">KALEIDOSCOPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/KarmaSalonSpringfield/?fref=ts" target="_blank">KARMA SALON</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/themarketspringfield/?fref=ts" target="_blank">THE MARKET</a></strong><strong style="text-align: center;">&nbsp;</strong><br />
 <a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/maxonsdiamondmerchants/?fref=ts" target="_blank">MAXON&#39;S DIAMOND MERCHANTS</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/mitchumjewelers/?fref=ts" target="_blank">MITCHUM JEWELERS</a>&nbsp;</strong><br />
-QC MOTO&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/TheReviewShoppe/?fref=ts&amp;ref=br_tf" target="_blank">THE REVIEW SHOPPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/shailasboutique/?fref=ts" target="_blank">SHAILA&#39;S</a><strong><strong>&nbsp;</strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/shopstaxx/?fref=ts" target="_blank">STAXX</a>&nbsp;</strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/ShopTownAndCounty/" target="_blank">TOWN &amp; COUNTY</a>&nbsp;<br />
+<a style="text-decoration:none;color:#000000;"  href=" https://www.facebook.com/SpringfieldPowerSports/?fref=ts" target="_blank">QC MOTO</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/TheReviewShoppe/?fref=ts&amp;ref=br_tf" target="_blank">THE REVIEW SHOPPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/shailasboutique/?fref=ts" target="_blank">SHAILA&#39;S</a><strong><strong>&nbsp;</strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/shopstaxx/?fref=ts" target="_blank">STAXX</a>&nbsp;</strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/ShopTownAndCounty/" target="_blank">TOWN &amp; COUNTY</a>&nbsp;<br />
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/shoptheuptown/?fref=ts" target="_blank">THE UPTOWN BOUTIQUE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="http://www.wbyworth.com" target="_blank">W BY WORTH COLLECTION</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/ViVo-modern-hair-design-129932740413250/?fref=ts" target="_blank">VIVO MODERN HAIR DESIGN</a></strong><br />
 <em>LEXUS LOUNGE AND VIP DECOR BY <a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Ellecordesignandgifts/?fref=ts" target="_blank">ELLECOR DESIGN &amp; GIFTS</a><br />
 			<br />
@@ -274,7 +275,7 @@ QC MOTO&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https
 
     if ($noLikes > 0) {
         mail($myName, $subject, $message, $headers, '-f' . $from);
-      //  echo $myName . "<br/>";
+        //  echo $myName . "<br/>";
         //echo $message . "<br/><br/>";
     }
 }
