@@ -27,6 +27,11 @@ class model {
         $res = $dbCon->select($sql);
         return $res;
     }
+    function getStoresAlpha($dbCon) {
+        $sql = "SELECT * FROM store ORDER BY storeName ASC";
+        $res = $dbCon->select($sql);
+        return $res;
+    }
 
     function getUserLikes($dbCon, $id) {
         //getting the loged in users likes (well reall you are getting everything about this user).
