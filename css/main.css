@@ -93,11 +93,15 @@ input#password:focus {
   bottom: 0;
   right: 0;
   background-color: #000;
-  height: 50px;
+  height: 40px;
   text-align: right;
-  margin: auto; }
+  margin: auto;
+  padding: 5px; }
   .menu img {
     width: 45px; }
+
+.bottomPad {
+  padding-bottom: 30px; }
 
 .menuItemLI {
   font-family: "Oswald", sans-serif;
@@ -125,7 +129,8 @@ input#password:focus {
 
 .welcomText {
   font-family: "Oswald", sans-serif;
-  font-size: 14pt; }
+  font-size: 14pt;
+  color: #000; }
 
 .adminEdit {
   position: fixed;
