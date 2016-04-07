@@ -6,11 +6,11 @@ include_once('../inc/dbl.login.inc.php');
 $dbCon = new PDODatabase($dbAdmin, $dbName, $dbPass);
 $addModel = new model();
 
-$stores = $addModel->getStores($dbCon);
+$stores = $addModel->getStoresAlpha($dbCon);
 //print_r($stores);
 $numStores = count($stores)-1;
 echo "<nav id='menu'>
-                <ul>";
+                <ul id='menuUL'>";
 for($z=0;$z<=$numStores;$z++){
     $storeName[$z] = $stores[$z]['storeName'];
     
