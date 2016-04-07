@@ -31,7 +31,7 @@
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <link type="text/css" href="css/jquery.mmenu.all.css" rel="stylesheet" />
+        
         <style>
             body {
 
@@ -61,10 +61,10 @@
 
 
         <div class="container-fluid">
-
-            <div class="menuItems" style="display:none">
+            <div class="greyOut"></div>
+            <div class="menuItems" >
                 <nav id="menu">
-                    <ul>
+                    <ul id="menuUL">
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About us</a>
                             <ul>
@@ -88,7 +88,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/jquery.mmenu.all.min.js"></script>
+        
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src='js/silverCookie.js'></script>
         <script src="js/main.js"></script>
@@ -97,21 +97,14 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-
+var screenHeight = jQuery(document).height();
+//alert(screenHeight);
+//alert(screenHeight+" px !important");
 
             jQuery('.menuItems').load('control/control_fillMenu.php', function () {
-                jQuery("#menu").mmenu({
-                    "slidingSubmenus": false,
-                    "extensions": [
-                        "effect-menu-zoom",
-                        "pagedim-black",
-                        "theme-dark"
-                    ]
-                });
-                var mmenu = $("#menu").data("mmenu");
-                jQuery('.menuItemLI').click(function () {
-                    mmenu.close();
-                });
+                //alert(screenHeight);
+                jQuery("#menuUL").css({height:screenHeight+"px"});
+                
             });
         </script>
 
