@@ -9,7 +9,7 @@ if($uname !=''){
 
 <div class="login-block" id="loginBlock">
     <div class="headImage top" >
-    <img  src="/img/Fashionation16_WebAppHeader5.png" />
+    <img  src="/img/Fashionation16_WebAppHeader8.png" />
 </div>
                     <h1>Login</h1>
                     <input type="text" value="" placeholder="E-Mail Address" id="username" />
