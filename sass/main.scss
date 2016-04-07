@@ -31,9 +31,9 @@ $fashionGold: #D6AA61;
 
 .login-block{
     width: $siteWidth;
-   // padding: 20px;
+    // padding: 20px;
     background: $backgroundColor;
-   // border-radius: $loginRadius;
+    // border-radius: $loginRadius;
     //border-top: 5px solid $loginRed;
     margin: 0 auto;
 
@@ -42,7 +42,7 @@ $fashionGold: #D6AA61;
         color: $fontColor;
         font-size: 18px;
         text-transform: uppercase;
-        
+
         margin-bottom: 20px;
     }
 
@@ -124,7 +124,7 @@ input#password:focus {
 .headImage{
     max-width:$siteSmallWidth;
     margin:auto;
-   // margin-top:-8px;
+    // margin-top:-8px;
     img{
         width:100%;
     }
@@ -152,11 +152,57 @@ input#password:focus {
 .bottomPad{
     padding-bottom:30px;
 }
-.menuItemLI{
-    font-family: $mainFont;
+.greyOut{
+    position:fixed;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
     background-color:$black;
-    font-size: $itemFontSize;
+    opacity:.5;
+    z-index:200;
+    display:none;
 }
+.menuItems{
+    //width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    z-index:201;
+    background-color:$black;
+    display:none;
+    nav{
+        width:100%;
+        opacity:1;
+
+        ul{
+            //height:200px;
+            list-style: none;
+            overflow-y:scroll;
+
+        }
+        ul::-webkit-scrollbar { 
+  /* This is the magic bit that hides the scroll bar */
+  display: none;
+}
+        .menuItemLI{
+            font-family: $mainFont;
+            background-color:$black;
+            font-size: $itemFontSize;
+            padding:10px;
+            
+            border-bottom:.5px solid $white;
+            a{
+                color:$white;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+
 
 .userView{
     .storeLogo{
@@ -170,17 +216,17 @@ input#password:focus {
         margin:auto;
         text-align:left;
     }
-    
+
 }
 
 .storeDescription{
-        width:99%;
-        text-align: left;
-        font-style: italic;
-        font-size: 12px;
-        //border:1px solid red;
-        margin:auto;
-    }
+    width:99%;
+    text-align: left;
+    font-style: italic;
+    font-size: 12px;
+    //border:1px solid red;
+    margin:auto;
+}
 
 
 

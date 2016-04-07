@@ -103,10 +103,43 @@ input#password:focus {
 .bottomPad {
   padding-bottom: 30px; }
 
-.menuItemLI {
-  font-family: "Oswald", sans-serif;
+.greyOut {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: #000;
-  font-size: 14pt; }
+  opacity: .5;
+  z-index: 200;
+  display: none; }
+
+.menuItems {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 201;
+  background-color: #000;
+  display: none; }
+  .menuItems nav {
+    width: 100%;
+    opacity: 1; }
+    .menuItems nav ul {
+      list-style: none;
+      overflow-y: scroll; }
+    .menuItems nav ul::-webkit-scrollbar {
+      /* This is the magic bit that hides the scroll bar */
+      display: none; }
+    .menuItems nav .menuItemLI {
+      font-family: "Oswald", sans-serif;
+      background-color: #000;
+      font-size: 14pt;
+      padding: 10px;
+      border-bottom: 0.5px solid #fff; }
+      .menuItems nav .menuItemLI a {
+        color: #fff;
+        text-decoration: none; }
 
 .userView .storeLogo {
   text-align: center; }
