@@ -21,14 +21,13 @@ echo "<script> var userID='$id'; </script>";
 <div id="edit" class="adminEdit"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>edit</div>
 <!-- this is the ads above the form-->
 <div class="headImage top" >
-    <img  src="/img/Fashionation16_WebAppHeader5.png" />
+    <img  src="/img/Fashionation16_WebAppHeader8.png" />
 </div>
 <div class="menu" id="menu" style="">
     <a href="#menu"><img src="/img/menuIcon.png" /></a>
 </div>
 <div class="welcomText" style="">
-
-    Follow along with the runway show and click to star the fashions you love below. We'll email you everything you liked at the end of the night!
+Follow along with the show and click to star the fashions you love below. We'll save everything as you go and email you what you liked at the end of the night!
 </div>
 <div class="headImage" >
     <img  src="/img/Fashionation16_WebAppSponsors.png" />
