@@ -11,37 +11,46 @@ $id = strip_tags($_GET['id']);
 //echo $id;
 //echo "<script>var id='$id';</script>";
 $stores = $addModel->getStores($dbCon);
-$storeCount = count($stores)-1;
+//->$storeCount = count($stores)-1;
 $modNum = '1';
 $modNumZero = '0';
-for ($z = 0; $z <= $storeCount; $z++) {
-    $storeName[$z] = $stores[$z]['storeName'];
-    
-    $anchor[$z] = str_replace("&", "and", $storeName[$z]);
-    $anchor[$z] = str_replace("1", "", $anchor[$z]);
-    $anchor[$z] = str_replace(" ", "_", $anchor[$z]);
+//for ($z = 0; $z <= $storeCount; $z++) {
+foreach($stores as $store){
+    //->$storeName[$z] = $stores[$z]['storeName'];
+    $storeName = $store['storeName'];
+    //->$anchor[$z] = str_replace(array("&", "1", " "), array("and", "","_"),$storeName[$z]);
+    $anchor[$z] = str_replace(array("&", "1", " "), array("and", "","_"),$storeName);
+    //$anchor[$z] = str_replace("&", "and", $storeName[$z]);
+    //$anchor[$z] = str_replace("1", "", $anchor[$z]);
+    //$anchor[$z] = str_replace(" ", "_", $anchor[$z]);
     echo '<div id="'.$anchor[$z].'"></div>';
 
-    echo '<div class="storeLogo"><img src="' . $stores[$z]['storeImage'] . '" /><img src="' . $stores[$z]['salonImage'] . '" /></div>';
-    $res = $addModel->getModel($dbCon, $storeName[$z]);
-    $resCount = count($res)-1;
+    //->echo '<div class="storeLogo"><img src="' . $stores[$z]['storeImage'] . '" /><img src="' . $stores[$z]['salonImage'] . '" /></div>';
+    echo '<div class="storeLogo"><img src="' . $store['storeImage'] . '" /><img src="' . $store['salonImage'] . '" /></div>';
+    //->$res = $addModel->getModel($dbCon, $storeName[$z]);
+    $res = $addModel->getModel($dbCon, $storeName);
+   //--> $resCount = count($res)-1;
 
     $getUserLikes = $addModel->getUserLikes($dbCon, $id);
 
 //print_r($getUserLikes);
-    for ($i = 0; $i <= $resCount; $i++) {
+   //--> for ($i = 0; $i <= $resCount; $i++) {
+    foreach($res as $model){
         $modelNum = $i + 1;
-        $store[$i] = $res[$i]['store'];
-        $mrch[$i] = explode('|', $res[$i]['items']);
-        $mrchPrice[$i] = explode('|', $res[$i]['price']);
+        //-->$store[$i] = $res[$i]['store'];
+        $store[$i] = $model['store'];
+        //-->$mrch[$i] = explode('|', $res[$i]['items']);
+        $mrch[$i] = explode('|', $model['items']);
+        //-->$mrchPrice[$i] = explode('|', $res[$i]['price']);
+        $mrchPrice[$i] = explode('|', $model['price']);
         echo "<div class='modelEdit' data-model='$modNum' id='modelNum_$modNumZero' style=''>
     <!--<div class='storeNameEdit' style=''>MODEL $modelNum</div>-->";
         $mrchCount = count($mrch[$i]) - 1;
         for ($x = 0; $x <= $mrchCount; $x++) {
             $item[$x] = $mrch[$i][$x];
             $price[$x] = $mrchPrice[$i][$x];
-            $price[$x] = str_replace('null', '', $price[$x]);
-            $price[$x] = str_replace('$', '', $price[$x]);
+            $price[$x] = str_replace(array("null", "$"), '', $price[$x]);
+            //$price[$x] = str_replace('$', '', $price[$x]);
             $currentModelCount = count($currentModelLikes[$i]);
             for ($y = 0; $y <= $currentModelCount; $y++) {
                 echo "<div class='itemsEdit' data-liked='false' data-item='$x' id='item_$x' style='display:table-row'><div style='display:table-cell'><input id='itemSelect' type='checkbox'></div><div style='display:table-cell'>$item[$x]";
@@ -62,8 +71,10 @@ for ($z = 0; $z <= $storeCount; $z++) {
         $modNumZero++;
     }
     
-    if($stores[$z]['storeDesc'] !== ''){
-        echo '<div class="storeDescription">'.$stores[$z]['storeDesc'].'</div>';
+   //-> if($stores[$z]['storeDesc'] !== ''){
+    if($store['storeDesc'] !== ''){
+        //->echo '<div class="storeDescription">'.$stores[$z]['storeDesc'].'</div>';
+        echo '<div class="storeDescription">'.$store['storeDesc'].'</div>';
     }
     echo '<div class="blackImage" style="">
     <img style="width:100% " src="/img/Fashionation16_WebApp_BlackBar.png" />
@@ -75,7 +86,7 @@ if ($getUserLikes != '') {
     //out, then running some jQuery to set those items to being liked.
     $getUserLikesCount = count($getUserLikes) - 1;
     for ($i = 0; $i <= $getUserLikesCount; $i++) {
-        $myLikes[$i] = explode('|', $getUserLikes[$i]);
+       $myLikes[$i] = explode('|', $getUserLikes[$i]);
         //print_r($myLikes);
         for ($x = 0; $x <= count($myLikes[$i]) - 1; $x++) {
             $realNum = $x + 1;
