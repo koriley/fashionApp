@@ -34,7 +34,7 @@ and open the template in the editor.
     outline: none; }
 
 input:active {
-  border: 1px solid #D6AA61; }
+  border: 1px solid #DEB065; }
 
 input#username {
   background: #fff url("http://i.imgur.com/u0XmBmv.png") 20px top no-repeat;
@@ -43,7 +43,7 @@ input#username {
 input#username:focus {
   background: #fff url("http://i.imgur.com/u0XmBmv.png") 20px bottom no-repeat;
   background-size: 16px 80px;
-  border: 1px solid #D6AA61; }
+  border: 1px solid #DEB065; }
 
 input#password {
   background: #fff url("http://i.imgur.com/Qf83FTt.png") 20px top no-repeat;
@@ -52,7 +52,7 @@ input#password {
 input#password:focus {
   background: #fff url("http://i.imgur.com/Qf83FTt.png") 20px bottom no-repeat;
   background-size: 16px 80px;
-  border: 1px solid #D6AA61; }
+  border: 1px solid #DEB065; }
 
 .buttonContainer {
   width: 100%; }
@@ -101,7 +101,8 @@ input#password:focus {
     width: 45px; }
 
 .bottomPad {
-  padding-bottom: 30px; }
+  padding-bottom: 30px;
+  color: #DEB065 !important; }
 
 .greyOut {
   position: fixed;
@@ -131,15 +132,15 @@ input#password:focus {
     .menuItems nav ul::-webkit-scrollbar {
       /* This is the magic bit that hides the scroll bar */
       display: none; }
-    .menuItems nav .menuItemLI {
-      font-family: "Oswald", sans-serif;
-      background-color: #000;
-      font-size: 14pt;
-      padding: 10px;
-      border-bottom: 0.5px solid #fff; }
-      .menuItems nav .menuItemLI a {
-        color: #fff;
-        text-decoration: none; }
+    .menuItems nav a {
+      color: #fff;
+      text-decoration: none; }
+      .menuItems nav a .menuItemLI {
+        font-family: "Oswald", sans-serif;
+        background-color: #000;
+        font-size: 14pt;
+        padding: 10px;
+        border-bottom: 0.5px solid #fff; }
 
 .userView .storeLogo {
   text-align: center; }
@@ -159,11 +160,6 @@ input#password:focus {
 
 .mother {
   text-align: center; }
-
-.welcomText {
-  font-family: "Oswald", sans-serif;
-  font-size: 14pt;
-  color: #000; }
 
 .adminEdit {
   position: fixed;
@@ -205,7 +201,10 @@ h1 {
 .welcomText {
   text-align: center;
   max-width: 380px;
-  margin: auto; }
+  margin: auto;
+  font-family: "Oswald", sans-serif;
+  font-size: 14pt;
+  color: #000; }
 
 /************ This is the admin css ******************/
 .modelEdit {

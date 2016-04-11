@@ -23,7 +23,7 @@ $white:#fff;
 $black:#000;
 $itemFontSize:14pt;
 $siteSmallWidth:375px;
-$fashionGold: #D6AA61;
+$fashionGold: #DEB065;
 
 
 
@@ -151,6 +151,7 @@ input#password:focus {
 }
 .bottomPad{
     padding-bottom:30px;
+    color:$fashionGold !important;
 }
 .greyOut{
     position:fixed;
@@ -183,19 +184,21 @@ input#password:focus {
 
         }
         ul::-webkit-scrollbar { 
-  /* This is the magic bit that hides the scroll bar */
-  display: none;
-}
-        .menuItemLI{
-            font-family: $mainFont;
-            background-color:$black;
-            font-size: $itemFontSize;
-            padding:10px;
-            
-            border-bottom:.5px solid $white;
-            a{
-                color:$white;
+            /* This is the magic bit that hides the scroll bar */
+            display: none;
+        }
+        a{
+             color:$white;
                 text-decoration: none;
+            .menuItemLI{
+                font-family: $mainFont;
+                background-color:$black;
+                font-size: $itemFontSize;
+                padding:10px;
+
+                border-bottom:.5px solid $white;
+
+               
             }
         }
     }
@@ -236,11 +239,7 @@ input#password:focus {
 
 
 
-.welcomText{
-    font-family: $mainFont;
-    font-size: $itemFontSize;
-    color:$black;
-}
+
 
 
 .adminEdit{
@@ -290,7 +289,11 @@ h1{
     text-align: center; 
     max-width:$siteWidth;
     margin:auto;
+    font-family: $mainFont;
+    font-size: $itemFontSize;
+    color:$black;
 }
+
 
 
 /************ This is the admin css ******************/
