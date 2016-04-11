@@ -17,7 +17,7 @@ for($z=0;$z<=$numStores;$z++){
     $anchor[$z] = str_replace("&", "and", $storeName[$z]);
     $anchor[$z] = str_replace("1", "", $anchor[$z]);
     $anchor[$z] = str_replace(" ", "_", $anchor[$z]);
-    echo '<li class="menuItemLI"><a href="http://417fashionation.com/#'.$anchor[$z].'">'.str_replace("1", "", $storeName[$z]).'</a></li>';
+    echo '<a href="http://417fashionation.com/#'.$anchor[$z].'"><li class="menuItemLI">'.str_replace("1", "", $storeName[$z]).'</li></a>';
 }
 
  echo "</ul>
