@@ -83,7 +83,8 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 			</td>
 		</tr>
 		<tr style="text-align: center;">
-			<td><span style="color:#FFFFFF;"></span></a><a href="http://www.417mag.com/spa-and-salon-week/" name="header_2" target="_blank" xt="SPCLICK"><span style="color:#FFFFFF;"><font face="Times"><img contentid="52851b4e-1533d95ee63-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation_eblastheader1.png" spname="Fashionation_eblastheader1.png" src="http://www.417fashionation.com/imgs/Fashionation_eblastheader3.png" style="width: 100%; " xt="SPIMAGE" /></font></span></td>
+			<td><span style="color:#FFFFFF;"></span></a><a href="http://www.417mag.com/417-Magazine/417-Fashionation/
+" name="header_2" target="_blank" xt="SPCLICK"><span style="color:#FFFFFF;"><font face="Times"><img contentid="52851b4e-1533d95ee63-943e27de0c8b91cc3fcf1475c3e5d726" name="Fashionation_eblastheader1.png" spname="Fashionation_eblastheader1.png" src="http://www.417fashionation.com/imgs/Fashionation_eblastheader3.png" style="width: 100%; " xt="SPIMAGE" /></font></span></td>
 		</tr>
 		<tr>
 			<td style="margin-bottom: 5px;">
@@ -117,10 +118,10 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
         //echo"<br/>";
         $first = $model[0]['modelNum'];
 
-        $modelCount = count($model);
+        $modelCount = count($model)-1;
         //echo $modelCount;
         //echo $stores[$k]['storeName']."<br/>";
-        for ($e = 0; $e <= $modelCount - 1; $e++) {
+        for ($e = 0; $e <= $modelCount; $e++) {
             //get user likes associated with model
             //echo "model_$v = " . $user[$aa]["model_$v"];
             $v++;
@@ -128,7 +129,8 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
             //echo "<br/>";
             if ($user[$aa]["model_$v"] != '') {
                 if ($store == 0) {
-                    $message .= "<strong><a href='" . $stores[$k]['storeLink'] . "'><img src='http://www.417fashionation.com/" . $stores[$k]['storeImage'] . "' /></a><a href='" . $stores[$k]['salonLink'] . "'><img src='http://417fashionation.com" . $stores[$k]['salonImage'] . "' /></a></strong><br/>";
+                    $message .= "<table width='600px' style='margin:auto; text-align:center;'>";
+                    $message .= "<tr><td><strong><a href='" . $stores[$k]['storeLink'] . "' style='border:0px;'><img src='http://www.417fashionation.com" . $stores[$k]['storeImage'] . "' /></a><a href='" . $stores[$k]['salonLink'] . "' style='border:0px;'><img src='http://417fashionation.com" . $stores[$k]['salonImage'] . "' /></a></strong></td></tr>";
                     $store = 1;
                 }
                 $whatILike = explode('|', $user[$aa]["model_$v"]);
@@ -145,15 +147,18 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
                     for ($x = 0; $x <= $wearingCount; $x++) {
                         if ($whatThisModelisWearing[$whatILike[$x]] != '') {
                             //echo $whatThisModelisWearing[$whatILike[$x]]."<br/>";
+                            $message .= "<tr>";
                             $noLikes = 1;
                             if ($itemPrice[$whatILike[$x]] == '') {
-                                $message .= $whatThisModelisWearing[$whatILike[$x]] . "<br/>";
+                                $message .= "<td>".$whatThisModelisWearing[$whatILike[$x]] . "</td>";
                             } else {
-                                $message .= $whatThisModelisWearing[$whatILike[$x]] . ", $" . $itemPrice[$whatILike[$x]] . "<br/>";
+                                $message .= "<td>".$whatThisModelisWearing[$whatILike[$x]] . ", $" . $itemPrice[$whatILike[$x]] . "</td>";
                             }
+                            $message .="</tr>";
                         }
                     }
                 }
+                
 
                 //echo $whatThisModelisWearing[$whatILike];
                 //echo "------------------------------<br/>";
@@ -169,8 +174,12 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 
 
         if ($store == 1) {
-            $message .= '<div style="margin-top:5px; width:400px; margin:auto; text-align:left; font-style:italic; font-size:15px;">' . $stores[$k]['storeDesc'] . '</div>';
-
+            if($stores[$k]['storeDesc']!=''){
+            $message .= '<tr><td><div style="margin-top:5px; width:400px; margin:auto; text-align:left; font-style:italic; font-size:15px;">' . $stores[$k]['storeDesc'] . '</div></td></tr>';
+            }
+$message .= '</table><br/><div class="blackImage" style="">
+    <img style="width:100% " src="http://www.417fashionation.com/img/Fashionation16_WebApp_BlackBar.png" />
+</div>';
             $message .= "<br/>";
         }
         $store = 0;
@@ -178,11 +187,14 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 
 
 
-    $message .= '<font face="Times"></font></td>
+    $message .= '</td>
 		</tr>
 		<tr>
 			<td>
-			<div style="text-align:center; margin-top:10px;"><span style="font-size:14px;"><span style="font-family:arial,helvetica,sans-serif;"><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/acaciaspaspringfield/?fref=ts" target="_blank">ACACIA SPA</a><strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/AmeliaMaddenBras/?fref=ts" target="_blank">AMELIA MADDEN BRA SHOPPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/BlueRavenEmporium/?fref=ts" target="_blank">BLUE RAVEN EMPORIUM</a>&nbsp;&nbsp;<br />
+                       
+			<div style="text-align:center; margin-top:10px;">
+<img border="0" contentid="52851b4e-1533e30f61e-943e27de0c8b91cc3fcf1475c3e5d726" height="35.644" name="Fashionation16_Sponsors.png" spname="Fashionation16_Sponsors.png" src="http://www.417fashionation.com/imgs/Fashionation16_Participants.png" width="80" xt="SPIMAGE" /><br/>                        
+<span style="font-size:14px;"><span style="font-family:arial,helvetica,sans-serif;"><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/acaciaspaspringfield/?fref=ts" target="_blank">ACACIA SPA</a><strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/AmeliaMaddenBras/?fref=ts" target="_blank">AMELIA MADDEN BRA SHOPPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/BlueRavenEmporium/?fref=ts" target="_blank">BLUE RAVEN EMPORIUM</a>&nbsp;&nbsp;<br />
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/springfieldcuttingedge/?fref=ts" target="_blank">THE CUTTING EDGE SALON</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/DowntownDapper/?fref=ts" target="_blank">DAPPER, A FINE GENTLEMEN&#39;S BARBERSHOP</a>&nbsp;<br />
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Emerald-Salon-and-Spa-589943254389783/?fref=ts" target="_blank">EMERALD SALON &amp; SPA</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Fashion-House-188098224535758/?fref=ts" target="_blank">FASHION HOUSE</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/GroveSpa/?fref=ts" target="_blank">GROVE SPA</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/ShopHaremCo/?fref=ts" target="_blank">HAREM &amp; COMPANY</a>&nbsp;<br />
 <strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/HoneyHive-Salon-Original-In-Haircare-312765758884009/?fref=ts" target="_blank">HONEY + HIVE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Inviktus-Paul-Mitchell-Focus-Salon-143695495644153/?fref=ts" target="_blank">INVIKTUS&nbsp;SALON</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/Kaleidoscope-85481318771/?fref=ts" target="_blank">KALEIDOSCOPE</a></strong>&nbsp;<a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/KarmaSalonSpringfield/?fref=ts" target="_blank">KARMA SALON</a>&nbsp;<strong><a style="text-decoration:none;color:#000000;"  href="https://www.facebook.com/themarketspringfield/?fref=ts" target="_blank">THE MARKET</a></strong><strong style="text-align: center;">&nbsp;</strong><br />
@@ -275,8 +287,8 @@ for ($aa = 0; $aa <= $userCount; $aa++) {
 
     if ($noLikes > 0) {
         mail($myName, $subject, $message, $headers, '-f' . $from);
-        //  echo $myName . "<br/>";
-        //echo $message . "<br/><br/>";
+          echo $myName . "<br/>";
+        echo $message . "<br/><br/>";
     }
 }
 
